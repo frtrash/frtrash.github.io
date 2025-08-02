@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AuraX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background-color: #000;
+      overflow: hidden;
+      font-family: 'Orbitron', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .logo {
+      color: #00ff00;
+      font-size: clamp(3rem, 10vw, 6rem);
+      font-weight: 900;
+      opacity: 0;
+      transform: translateY(0);
+      animation: appearCenter 1s ease-out 1s forwards,
+                 moveUp 1.2s ease-in-out 2.2s forwards,
+                 shrink 0.5s ease-in-out 3.6s forwards,
+                 eeriePulse 2s ease-in-out 4.2s infinite alternate;
+      z-index: 2;
+    }
+
+    .info {
+      font-size: 1.25rem;
+      opacity: 0;
+      position: absolute;
+      top: 55%;
+      left: 5%;
+      transform: translate(0, -50%) scale(1);
+      text-align: left;
+      width: 80%;
+      max-width: 600px;
+      background: transparent;
+      padding: 1rem;
+      z-index: 2;
+      transition: color 0.5s ease;
+      animation: showInfo 1s ease-in-out 5s forwards;
+    }
+
+    .info.green {
+      color: #00ff00;
+    }
+
+    .info.red {
+      color: #ff0000;
+    }
+
+    .breach-announce {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      animation: breachBlink 10s infinite;
+      z-index: 2;
+    }
+
+    .matrix-bg {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      z-index: 0;
+      background: black;
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .enter-btn {
+      position: absolute;
+      right: 25%;
+      top: 65%;
+      transform: translateX(50%);
+      font-size: 1.5rem;
+      padding: 1rem 2rem;
+      font-family: 'Orbitron', sans-serif;
+      background-color: rgba(0,0,0,0.8);
+      border: 2px solid;
+      cursor: pointer;
+      z-index: 3;
+      text-shadow: 0 0 5px, 0 0 10px;
+      box-shadow: 0 0 15px;
+      transition: all 0.3s ease;
+      border-radius: 8px;
+      opacity: 0;
+      pointer-events: none;
+      animation: showButton 1s ease-in-out 6s forwards;
+    }
+
+    .enter-btn:hover {
+      background: radial-gradient(circle at center, #111 30%, transparent 70%);
+      color: #fff;
+      transform: scale(1.2) rotate(-4deg) translateX(50%);
+      box-shadow: 0 0 20px #ff0000, 0 0 40px #00ff00, 0 0 80px rgba(255, 0, 0, 0.5);
+      border-color: #fff;
+    }
+
+    .enter-btn:active {
+      transform: scale(0.9) translateX(50%);
+      box-shadow: 0 0 45px #ff0000;
+    }
+
+    @keyframes appearCenter {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes moveUp {
+      from { transform: translateY(0); }
+      to { transform: translateY(-40vh); }
+    }
+
+    @keyframes shrink {
+      from { transform: translateY(-40vh) scale(1); }
+      to { transform: translateY(-40vh) scale(0.85); }
+    }
+
+    @keyframes eeriePulse {
+      0% {
+        text-shadow: 0 0 4px #00ff00, 0 0 8px #003300;
+        opacity: 0.95;
+      }
+      100% {
+        text-shadow: 0 0 6px #00ff00, 0 0 12px #004400;
+        opacity: 1;
+      }
+    }
+
+    @keyframes showInfo {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes breachBlink {
+      0%, 49% {
+        color: red;
+      }
+      50%, 100% {
+        color: black;
+      }
+    }
+
+    @keyframes showButton {
+      from { opacity: 0; }
+      to { opacity: 1; pointer-events: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="matrix-bg">
+    <canvas id="matrix"></canvas>
+  </div>
+
+  <div class="logo">AuraX</div>
+
+  <div class="info red" id="infoBox">
+  Welcome to AuraX — the next-gen digital arsenal.<br>
+    Deploying tactical-grade web utilities...<br>
+    Initiating immersive in-browser experiences...<br>
+    Games. Tools. Exploits. All within your reach.<br>
+    Encrypted services now operational...<br>
+    AuraX core stabilized and monitoring activity...
+  </div>
+
+  <div class="breach-announce">AmitBhai has breached the system.</div>
+
+  <button class="enter-btn" id="matrixBtn">👻 DEPLOY</button>
+
+  <script>
+    const infoBox = document.getElementById('infoBox');
+    const matrixBtn = document.getElementById('matrixBtn');
+
+    let isRed = true;
+
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth / 2;
+      canvas.height = window.innerHeight;
+    }
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    const phrases = [
+      "BREACHED", "FIREWALL DOWN", "INITIATING SECURITY MECHANISM",
+      "OVERRIDE ENABLED ALURI GAY ALURI GAY ALURI GAY ALURI GAY ALURI GAY ALURI GAY ALURI GAY ALURI GAY", "ALURI THIRUMALA NAIDU IS GAY", "ERROR 0101",
+      "REBOOTING CORE", "ALURI GAY"
+    ];
+
+    const fontSize = 14;
+    const columns = Math.floor(canvas.width / fontSize);
+    const drops = Array(columns).fill(1);
+
+    let matrixColor = "rgba(255, 0, 0, 0.7)";
+
+    function updateMatrixColor() {
+      isRed = !isRed;
+      matrixColor = isRed ? "rgba(255, 0, 0, 0.7)" : "rgba(0, 255, 0, 0.6)";
+
+      matrixBtn.style.color = isRed ? '#00ff00' : '#8b0000';
+      matrixBtn.style.borderColor = isRed ? '#00ff00' : '#8b0000';
+      matrixBtn.style.textShadow = isRed ? '0 0 5px #00ff00, 0 0 10px #00ff00' : '0 0 5px #8b0000, 0 0 10px #8b0000';
+      matrixBtn.style.boxShadow = isRed ? '0 0 15px #00ff00, 0 0 30px #00ff00' : '0 0 15px #8b0000, 0 0 30px #8b0000';
+
+      infoBox.classList.remove('red', 'green');
+      infoBox.classList.add(isRed ? 'red' : 'green');
+    }
+
+    setInterval(updateMatrixColor, 15000);
+
+    function drawMatrix() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = matrixColor;
+      ctx.font = `${fontSize}px Orbitron`;
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = phrases[Math.floor(Math.random() * phrases.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+
+    setInterval(drawMatrix, 60);
+  </script>
+</body>
+</html>
