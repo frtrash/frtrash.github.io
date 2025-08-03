@@ -2,16 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>AuraX</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap" rel="stylesheet">
+  <title>AuraX | HOMEPAGE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <meta name="google-site-verification" content="HefEUxzBKd72kpMj3wVh-sggBXluH-xzWcBwMX0G6eA" />
   <style>
+    :root {
+      --neon-green: #00ff00;
+      --neon-red: #ff0000;
+      --dark-red: #8b0000;
+      --matrix-speed: 60ms;
+      --glitch-duration: 0.3s;
+    }
+    
     body {
       margin: 0;
       padding: 0;
       height: 100vh;
-      background-color: #000;
+      background: #000;
       overflow: hidden;
       font-family: 'Orbitron', sans-serif;
       display: flex;
@@ -19,56 +27,83 @@
       align-items: center;
       flex-direction: column;
       position: relative;
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%2300ff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>'), auto;
     }
 
+    /* === CRT SCANLINES & GLITCH === */
+    .scanline {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(0, 255, 0, 0.05) 0.5%,
+        transparent 1%
+      );
+      background-size: 100% 8px;
+      animation: scanline 8s linear infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .glitch-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
+      opacity: 0.1;
+      z-index: 0;
+    }
+
+    /* === LOGO === */
     .logo {
-      color: #00ff00;
+      color: var(--neon-green);
       font-size: clamp(3rem, 10vw, 6rem);
       font-weight: 900;
       opacity: 0;
       transform: translateY(0);
-      animation: appearCenter 1s ease-out 1s forwards,
-                 moveUp 1.2s ease-in-out 2.2s forwards,
-                 shrink 0.5s ease-in-out 3.6s forwards,
-                 eeriePulse 2s ease-in-out 4.2s infinite alternate;
+      animation: 
+        appearCenter 1s ease-out 1s forwards,
+        moveUp 1.2s ease-in-out 2.2s forwards,
+        shrink 0.5s ease-in-out 3.6s forwards,
+        eeriePulse 2s ease-in-out 4.2s infinite alternate;
       z-index: 2;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      margin-right: -0.3em;
     }
 
+    /* === TERMINAL TEXT === */
     .info {
-      font-size: 1.25rem;
+      font-size: clamp(1rem, 1.5vw, 1.25rem);
       opacity: 0;
       position: absolute;
       top: 55%;
       left: 5%;
-      transform: translate(0, -50%) scale(1);
+      transform: translate(0, -50%);
       text-align: left;
       width: 80%;
       max-width: 600px;
-      background: transparent;
-      padding: 1rem;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 1.5rem;
       z-index: 2;
-      transition: color 0.5s ease;
+      border-left: 3px solid var(--neon-green);
+      font-family: 'Share Tech Mono', monospace;
+      line-height: 1.6;
+      box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+      border-radius: 0 8px 8px 0;
       animation: showInfo 1s ease-in-out 5s forwards;
     }
 
-    .info.green {
-      color: #00ff00;
-    }
+    .info.green { color: var(--neon-green); border-left-color: var(--neon-green); }
+    .info.red { color: var(--neon-red); border-left-color: var(--neon-red); }
 
-    .info.red {
-      color: #ff0000;
-    }
-
-    .breach-announce {
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
-      font-size: 1rem;
-      font-weight: bold;
-      animation: breachBlink 10s infinite;
-      z-index: 2;
-    }
-
+    /* === MATRIX RAIN (RIGHT SIDE) === */
     .matrix-bg {
       position: absolute;
       top: 0;
@@ -76,7 +111,7 @@
       width: 50%;
       height: 100%;
       z-index: 0;
-      background: black;
+      background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
     }
 
     canvas {
@@ -85,168 +120,198 @@
       height: 100%;
     }
 
+    /* === DEPLOY BUTTON (MAIN ACTION) === */
     .enter-btn {
       position: absolute;
       right: 25%;
       top: 65%;
       transform: translateX(50%);
-      font-size: 1.5rem;
+      font-size: clamp(1rem, 2vw, 1.5rem);
       padding: 1rem 2rem;
       font-family: 'Orbitron', sans-serif;
-      background-color: rgba(0,0,0,0.8);
-      border: 2px solid;
+      background: rgba(0, 0, 0, 0.8);
+      border: 2px solid var(--neon-green);
       cursor: pointer;
       z-index: 3;
-      text-shadow: 0 0 5px, 0 0 10px;
-      box-shadow: 0 0 15px;
+      text-shadow: 0 0 5px var(--neon-green);
+      box-shadow: 0 0 15px var(--neon-green);
       transition: all 0.3s ease;
       border-radius: 8px;
       opacity: 0;
       pointer-events: none;
       animation: showButton 1s ease-in-out 6s forwards;
+      color: var(--neon-green);
+      letter-spacing: 0.1em;
+      overflow: hidden;
+    }
+
+    .enter-btn::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        to bottom right,
+        rgba(0, 255, 0, 0) 45%,
+        rgba(0, 255, 0, 0.1) 50%,
+        rgba(0, 255, 0, 0) 55%
+      );
+      transform: rotate(30deg);
+      animation: shine 3s infinite;
     }
 
     .enter-btn:hover {
-      background: radial-gradient(circle at center, #111 30%, transparent 70%);
-      color: #fff;
-      transform: scale(1.2) rotate(-4deg) translateX(50%);
-      box-shadow: 0 0 20px #ff0000, 0 0 40px #00ff00, 0 0 80px rgba(255, 0, 0, 0.5);
+      background: rgba(17, 17, 17, 0.9);
+      transform: translateX(50%) scale(1.1) rotate(-1deg);
+      box-shadow: 
+        0 0 20px var(--neon-red),
+        0 0 40px var(--neon-green),
+        0 0 80px rgba(255, 0, 0, 0.5);
       border-color: #fff;
     }
 
     .enter-btn:active {
-      transform: scale(0.9) translateX(50%);
-      box-shadow: 0 0 45px #ff0000;
+      transform: translateX(50%) scale(0.95);
+      box-shadow: 0 0 45px var(--neon-red);
     }
 
-    @keyframes appearCenter {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    /* === BREACH WARNING === */
+    .breach-announce {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      animation: breachBlink 10s infinite;
+      z-index: 2;
+      font-family: 'Share Tech Mono', monospace;
+      padding: 0.5rem;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 4px;
     }
 
-    @keyframes moveUp {
-      from { transform: translateY(0); }
-      to { transform: translateY(-40vh); }
-    }
-
-    @keyframes shrink {
-      from { transform: translateY(-40vh) scale(1); }
-      to { transform: translateY(-40vh) scale(0.85); }
-    }
-
+    /* === ANIMATIONS === */
+    @keyframes appearCenter { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes moveUp { from { transform: translateY(0); } to { transform: translateY(-40vh); } }
+    @keyframes shrink { from { transform: translateY(-40vh) scale(1); } to { transform: translateY(-40vh) scale(0.85); } }
     @keyframes eeriePulse {
-      0% {
-        text-shadow: 0 0 4px #00ff00, 0 0 8px #003300;
-        opacity: 0.95;
-      }
-      100% {
-        text-shadow: 0 0 6px #00ff00, 0 0 12px #004400;
-        opacity: 1;
-      }
+      0% { text-shadow: 0 0 4px var(--neon-green), 0 0 8px rgba(0, 51, 0, 0.7); opacity: 0.95; }
+      100% { text-shadow: 0 0 6px var(--neon-green), 0 0 12px rgba(0, 68, 0, 0.9); opacity: 1; }
     }
-
-    @keyframes showInfo {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes breachBlink {
-      0%, 49% {
-        color: red;
-      }
-      50%, 100% {
-        color: black;
-      }
-    }
-
-    @keyframes showButton {
-      from { opacity: 0; }
-      to { opacity: 1; pointer-events: auto; }
-    }
+    @keyframes showInfo { from { opacity: 0; transform: translate(0, -50%) translateX(-20px); } to { opacity: 1; transform: translate(0, -50%); } }
+    @keyframes breachBlink { 0%,49% { color: var(--neon-red); text-shadow: 0 0 5px var(--neon-red); } 50%,100% { color: #000; text-shadow: none; } }
+    @keyframes showButton { from { opacity: 0; transform: translateX(50%) translateY(20px); } to { opacity: 1; pointer-events: auto; transform: translateX(50%); } }
+    @keyframes scanline { to { background-position: 0 100%; } }
+    @keyframes shine { to { transform: translateX(100%) rotate(30deg); } }
+    @keyframes glitch { 0% { clip-path: inset(0 0 95% 0); } 25% { clip-path: inset(0 0 20% 0); } 50% { clip-path: inset(0 0 50% 0); } 75% { clip-path: inset(0 0 15% 0); } 100% { clip-path: inset(0 0 85% 0); } }
   </style>
 </head>
 <body>
+  <!-- === VISUAL EFFECTS === -->
+  <div class="scanline"></div>
+  <div class="glitch-overlay"></div>
   <div class="matrix-bg">
     <canvas id="matrix"></canvas>
   </div>
 
+  <!-- === MAIN CONTENT === -->
   <div class="logo">AuraX</div>
-
-  <div class="info red" id="infoBox">
-  Welcome to AuraX — the next-gen digital arsenal.<br>
-    Deploying tactical-grade web utilities...<br>
-    Initiating immersive in-browser experiences...<br>
-    Games. Tools. Exploits. All within your reach.<br>
-    Encrypted services now operational...<br>
-    AuraX core stabilized and monitoring activity...
-  </div>
-
+  <div class="info red" id="infoBox"></div>
   <div class="breach-announce">AmitBhai has breached the system.</div>
-
-  <button class="enter-btn" id="matrixBtn">👻 DEPLOY</button>
+  <button class="enter-btn" id="matrixBtn">⚡ DEPLOY</button>
 
   <script>
-    const infoBox = document.getElementById('infoBox');
-    const matrixBtn = document.getElementById('matrixBtn');
-
-    let isRed = true;
-
+    // === MATRIX RAIN ===
     const canvas = document.getElementById('matrix');
     const ctx = canvas.getContext('2d');
-
-    function resizeCanvas() {
+    canvas.width = window.innerWidth / 2;
+    canvas.height = window.innerHeight;
+    window.addEventListener('resize', () => {
       canvas.width = window.innerWidth / 2;
       canvas.height = window.innerHeight;
-    }
-
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
+    });
 
     const phrases = [
       "BREACHED", "FIREWALL DOWN", "INITIATING SECURITY MECHANISM",
       "OVERRIDE ENABLED", "AmitBhai", "ERROR 0101",
-      "REBOOTING CORE", "AmitBhai"
+      "REBOOTING CORE", "AmitBhai", "ACCESS GRANTED",
+      "SYSTEM COMPROMISED", "DATA STREAM ACTIVE", "TERMINAL ONLINE"
     ];
 
     const fontSize = 14;
     const columns = Math.floor(canvas.width / fontSize);
     const drops = Array(columns).fill(1);
-
     let matrixColor = "rgba(255, 0, 0, 0.7)";
 
-    function updateMatrixColor() {
-      isRed = !isRed;
-      matrixColor = isRed ? "rgba(255, 0, 0, 0.7)" : "rgba(0, 255, 0, 0.6)";
-
-      matrixBtn.style.color = isRed ? '#00ff00' : '#8b0000';
-      matrixBtn.style.borderColor = isRed ? '#00ff00' : '#8b0000';
-      matrixBtn.style.textShadow = isRed ? '0 0 5px #00ff00, 0 0 10px #00ff00' : '0 0 5px #8b0000, 0 0 10px #8b0000';
-      matrixBtn.style.boxShadow = isRed ? '0 0 15px #00ff00, 0 0 30px #00ff00' : '0 0 15px #8b0000, 0 0 30px #8b0000';
-
-      infoBox.classList.remove('red', 'green');
-      infoBox.classList.add(isRed ? 'red' : 'green');
-    }
-
-    setInterval(updateMatrixColor, 15000);
-
     function drawMatrix() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       ctx.fillStyle = matrixColor;
-      ctx.font = `${fontSize}px Orbitron`;
+      ctx.font = `${fontSize}px 'Share Tech Mono', monospace`;
 
       for (let i = 0; i < drops.length; i++) {
-        const text = phrases[Math.floor(Math.random() * phrases.length)];
+        const text = Math.random() > 0.3 
+          ? phrases[Math.floor(Math.random() * phrases.length)] 
+          : String.fromCharCode(Math.random() * 128);
+        
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
+        
         if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
           drops[i] = 0;
         }
         drops[i]++;
       }
     }
-
     setInterval(drawMatrix, 60);
+
+    // === COLOR SWITCHER (RED/GREEN) ===
+    const infoBox = document.getElementById('infoBox');
+    const matrixBtn = document.getElementById('matrixBtn');
+    let isRed = true;
+
+    function updateMatrixColor() {
+      isRed = !isRed;
+      matrixColor = isRed ? "rgba(255, 0, 0, 0.7)" : "rgba(0, 255, 0, 0.6)";
+      matrixBtn.style.color = isRed ? 'var(--neon-green)' : 'var(--dark-red)';
+      matrixBtn.style.borderColor = isRed ? 'var(--neon-green)' : 'var(--dark-red)';
+      matrixBtn.style.textShadow = isRed ? '0 0 5px var(--neon-green)' : '0 0 5px var(--dark-red)';
+      matrixBtn.style.boxShadow = isRed ? '0 0 15px var(--neon-green)' : '0 0 15px var(--dark-red)';
+      infoBox.classList.remove('red', 'green');
+      infoBox.classList.add(isRed ? 'red' : 'green');
+    }
+    setInterval(updateMatrixColor, 15000);
+
+    // === TERMINAL TYPEWRITER EFFECT ===
+    const terminalText = [
+      "> Welcome to AuraX — the next-gen digital arsenal.",
+      "> Deploying tactical-grade web utilities...",
+      "> Initiating immersive in-browser experiences...",
+      "> Games. Tools. Exploits. All within your reach.",
+      "> Encrypted services now operational...",
+      "> AuraX core stabilized and monitoring activity..."
+    ].join("<br>");
+
+    infoBox.innerHTML = "";
+    let charIndex = 0;
+    const typeInterval = setInterval(() => {
+      if (charIndex < terminalText.length) {
+        infoBox.innerHTML += terminalText.charAt(charIndex);
+        charIndex++;
+      } else {
+        clearInterval(typeInterval);
+      }
+    }, 20);
+
+    // === DEPLOY BUTTON REDIRECT ===
+    matrixBtn.addEventListener('click', () => {
+      // Glitch effect before redirect
+      document.body.style.animation = "glitch 0.5s linear";
+      setTimeout(() => {
+        window.location.href = "deploy.html";
+      }, 500);
+    });
   </script>
 </body>
 </html>
