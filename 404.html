@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>404 - Forbidden Sector</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background-color: #000;
+      overflow: hidden;
+      font-family: 'Orbitron', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      color: #ff0000;
+    }
+
+    .matrix-bg {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .content {
+      z-index: 3;
+      text-align: center;
+      padding: 2rem;
+      animation: glitchIn 1s ease-in-out;
+    }
+
+    .content h1 {
+      font-size: 3rem;
+      color: #ff0000;
+      animation: glowRed 2s ease-in-out infinite alternate;
+    }
+
+    .content p {
+      font-size: 1.25rem;
+      color: #00ff00;
+      margin-bottom: 2rem;
+      animation: glowGreen 2s ease-in-out infinite alternate;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      font-family: 'Orbitron', sans-serif;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      border: 2px solid #fff;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px #ff0000;
+    }
+
+    .btn:hover {
+      background-color: #ff0000;
+      color: #000;
+      border-color: #00ff00;
+      box-shadow: 0 0 15px #00ff00;
+    }
+
+    @keyframes glowRed {
+      0% { text-shadow: 0 0 5px #ff0000; }
+      100% { text-shadow: 0 0 20px #ff0000; }
+    }
+
+    @keyframes glowGreen {
+      0% { text-shadow: 0 0 5px #00ff00; }
+      100% { text-shadow: 0 0 20px #00ff00; }
+    }
+
+    @keyframes glitchIn {
+      0% { opacity: 0; transform: scale(1.1); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .glitch-screen {
+      pointer-events: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+      background: repeating-linear-gradient(0deg, rgba(255,255,255,0.03), rgba(255,255,255,0.03) 1px, transparent 1px, transparent 2px);
+      animation: glitchShift 1s infinite;
+      mix-blend-mode: color-dodge;
+    }
+
+    @keyframes glitchShift {
+      0% { transform: translate(0, 0); opacity: 0.05; }
+      25% { transform: translate(-2px, 2px); opacity: 0.1; }
+      50% { transform: translate(2px, -2px); opacity: 0.05; }
+      75% { transform: translate(-1px, 1px); opacity: 0.08; }
+      100% { transform: translate(0, 0); opacity: 0.06; }
+    }
+  </style>
+</head>
+<body>
+  <div class="matrix-bg">
+    <canvas id="matrix"></canvas>
+  </div>
+
+  <div class="glitch-screen"></div>
+
+  <div class="content">
+    <h1>404 – SYSTEM FAILURE</h1>
+    <p>You have entered a forbidden sector</p>
+    <a href="index.html" class="btn">⬅ Back to Base</a>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    const phrases = [
+      "ACCESS DENIED", "UNAUTHORIZED ZONE", "BREACH DETECTED",
+      "FORBIDDEN PATH", "404 CODE", "EXFILTRATE NOW",
+      "SYSTEM OVERRIDE", "HIDDEN NODE"
+    ];
+
+    const fontSize = 16;
+    const columns = Math.floor(canvas.width / fontSize);
+    const drops = Array(columns).fill(1);
+
+    function drawMatrix() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "rgba(255, 0, 0, 0.6)";
+      ctx.font = fontSize + "px Orbitron";
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = phrases[Math.floor(Math.random() * phrases.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+
+    setInterval(drawMatrix, 60);
+  </script>
+</body>
+</html>
