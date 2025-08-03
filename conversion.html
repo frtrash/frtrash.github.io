@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AuraX File Forge | Client-Side Conversion</title>
-	<!-- Custom AuraX Favicon (Line 7) -->
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><filter id='glow'><feGaussianBlur stdDeviation='3'/></filter></defs><path d='M50 15L85 50L50 85L15 50Z' fill='none' stroke='%2300ff00' stroke-width='8' filter='url(%23glow)'/><path d='M30 50H70M50 30V70' stroke='%2300ff00' stroke-width='5'/></svg>">
     <style>
         :root {
             --dark-0: #050507;
@@ -56,27 +54,6 @@
             justify-content: center;
             gap: 1rem;
             margin-bottom: 1rem;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .logo:hover .logo-tooltip {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        .logo-tooltip {
-            position: absolute;
-            bottom: -30px;
-            background-color: var(--dark-2);
-            color: var(--text);
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 0.3s;
-            white-space: nowrap;
         }
 
         .logo-icon {
@@ -105,22 +82,6 @@
             color: var(--text-dim);
             font-size: 1.1rem;
             margin-top: 0.5rem;
-        }
-
-        .safety-notice {
-            background-color: var(--dark-2);
-            border-left: 4px solid var(--success);
-            padding: 0.8rem 1rem;
-            border-radius: 6px;
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .safety-notice i {
-            color: var(--success);
         }
 
         /* Tool Grid */
@@ -307,254 +268,16 @@
                 gap: 1rem;
             }
         }
-		.threat-level {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-family: 'Share Tech Mono';
-  animation: pulse 2s infinite alternate;
-}
-
-@keyframes pulse {
-  from { text-shadow: 0 0 5px var(--neon-green); }
-  to { text-shadow: 0 0 15px var(--neon-red); }
-}
-  <!-- ===== CRITICAL CSS ===== -->
-  <style>
-    :root {
-      --neon-green: #00ff00;
-      --neon-red: #ff0000;
-      --dark-red: #8b0000;
-    }
-    
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      background: #000;
-      overflow: hidden;
-      font-family: 'Orbitron', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      position: relative;
-    }
-
-    /* Performance tweaks */
-    * {
-      box-sizing: border-box;
-      -webkit-font-smoothing: antialiased;
-      image-rendering: optimizeSpeed;
-    }
-
-    /* Scanline effect (GPU accelerated) */
-    .scanline {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: repeating-linear-gradient(
-        180deg,
-        rgba(0,0,0,0) 0%,
-        rgba(0,255,0,0.03) 50%,
-        rgba(0,0,0,0) 100%
-      );
-      background-size: 100% 4px;
-      pointer-events: none;
-      z-index: 1;
-      will-change: transform;
-    }
-
-    /* Threat level indicator */
-    .threat-level {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      color: var(--neon-green);
-      font-family: 'Share Tech Mono';
-      font-size: 0.9rem;
-      text-shadow: 0 0 5px currentColor;
-      z-index: 10;
-    }
-
-    /* Binary clock */
-    .binary-clock {
-      position: absolute;
-      bottom: 50px;
-      left: 20px;
-      color: var(--neon-green);
-      font-family: 'Share Tech Mono';
-      font-size: 0.8rem;
-      line-height: 1.4;
-      z-index: 10;
-    }
-  </style>
-</head>
-<body>
-  <!-- === VISUAL EFFECTS === -->
-  <div class="scanline"></div>
-  
-  <!-- === UI COMPONENTS === -->
-  <div class="threat-level">THREAT LEVEL: SECURE</div>
-  <div class="binary-clock" id="binaryClock"></div>
-  <div class="logo-container" id="logo3d"></div>
-  
-  <!-- === AUDIO ELEMENTS === -->
-  <audio id="hoverSound" preload="auto">
-    <source src="data:audio/mpeg;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsuY29tIC8gTGFTb25vdGhlcXVlLm9yZwBURU5DAAAAHQAAA1N3aXRjaCBQbHVzIMKpIE5DSCBTb2Z0d2FyZQBUSVQyAAAABgAAAzIyMzUAVFNTRQAAAA8AAANMYXZmNTcuODMuMTAwAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV" type="audio/mpeg">
-  </audio>
-  
-  <!-- === MAIN CONTENT === -->
-  <script>
-    // ===== PERFORMANCE OPTIMIZATIONS =====
-    // Debounce resize events
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(handleResize, 100);
-    });
-
-    // Use requestAnimationFrame for animations
-    let lastTime = 0;
-    const throttleRate = 1000/60; // 60fps
-
-    // ===== THREAT LEVEL SYSTEM =====
-    const threats = [
-      { level: "SECURE", color: "var(--neon-green)" },
-      { level: "WARNING", color: "gold" },
-      { level: "CRITICAL", color: "var(--neon-red)" }
-    ];
-
-    function updateThreatLevel() {
-      const threat = threats[Math.floor(Math.random() * threats.length)];
-      const indicator = document.querySelector('.threat-level');
-      indicator.textContent = `THREAT LEVEL: ${threat.level}`;
-      indicator.style.color = threat.color;
-      
-      // Random interval between 3-8 seconds
-      setTimeout(updateThreatLevel, 3000 + Math.random() * 5000);
-    }
-
-    // ===== BINARY CLOCK =====
-    function updateBinaryClock() {
-      const now = new Date();
-      const binary = {
-        hours: now.getHours().toString(2).padStart(6,'0'),
-        minutes: now.getMinutes().toString(2).padStart(6,'0'),
-        seconds: now.getSeconds().toString(2).padStart(6,'0')
-      };
-      document.getElementById('binaryClock').innerHTML = `
-        SYSTEM TIME:<br>
-        H ${binary.hours}<br>
-        M ${binary.minutes}<br>
-        S ${binary.seconds}
-      `;
-      requestAnimationFrame(updateBinaryClock);
-    }
-
-    // ===== 3D HOLOGRAPHIC LOGO =====
-    function init3DLogo() {
-      const container = document.getElementById('logo3d');
-      if (!WebGLRenderingContext) {
-        container.innerHTML = '<div class="fallback-logo">AURAX</div>';
-        return;
-      }
-
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
-      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-      renderer.setSize(200, 200);
-      container.appendChild(renderer.domElement);
-
-      const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
-      const material = new THREE.MeshBasicMaterial({ 
-        color: 0x00ff00,
-        wireframe: true,
-        transparent: true,
-        opacity: 0.8
-      });
-      
-      const torus = new THREE.Mesh(geometry, material);
-      scene.add(torus);
-      camera.position.z = 30;
-
-      function animate(time) {
-        requestAnimationFrame(animate);
-        torus.rotation.x = time * 0.0005;
-        torus.rotation.y = time * 0.001;
-        renderer.render(scene, camera);
-      }
-      animate();
-    }
-
-    // ===== KONAMI CODE EASTER EGG =====
-    function initKonamiCode() {
-      const konamiCode = [
-        'ArrowUp', 'ArrowUp', 
-        'ArrowDown', 'ArrowDown', 
-        'ArrowLeft', 'ArrowRight', 
-        'ArrowLeft', 'ArrowRight', 
-        'b', 'a'
-      ];
-      let input = [];
-
-      document.addEventListener('keydown', (e) => {
-        input.push(e.key);
-        if (input.length > konamiCode.length) input.shift();
-        
-        if (input.join() === konamiCode.join()) {
-          document.body.classList.add('terminal-mode');
-          console.log('DEBUG MODE ACTIVATED');
-        }
-      });
-    }
-
-    // ===== INITIALIZE EVERYTHING =====
-    document.addEventListener('DOMContentLoaded', () => {
-      // Start systems
-      updateThreatLevel();
-      updateBinaryClock();
-      init3DLogo();
-      initKonamiCode();
-      
-      // Audio setup
-      const hoverSound = document.getElementById('hoverSound');
-      hoverSound.volume = 0.3;
-      
-      // Button interactions
-      const deployBtn = document.createElement('button');
-      deployBtn.id = 'deployBtn';
-      deployBtn.textContent = '⚡ DEPLOY';
-      deployBtn.addEventListener('mouseenter', () => {
-        hoverSound.currentTime = 0;
-        hoverSound.play().catch(e => console.log('Audio prevented:', e));
-      });
-      document.body.appendChild(deployBtn);
-    });
-
-    // Handle resize efficiently
-    function handleResize() {
-      // Update any responsive elements here
-    }
-  </script>
     </style>
-
 </head>
 <body>
     <div class="container">
         <header class="header">
-            <div class="logo" onclick="window.location.href='https://theaurax.github.io'">
+            <div class="logo">
                 <div class="logo-icon">A</div>
                 <div class="logo-text">AURAX FORGE</div>
-                <div class="logo-tooltip">Go to homepage</div>
             </div>
             <p class="tagline">Client-side file conversion with military precision</p>
-            <div class="safety-notice">
-                <i class="fas fa-shield-alt"></i>
-                <span>100% client-side processing - Your files never leave your browser and are never stored on any server</span>
-            </div>
         </header>
 
         <div class="tool-grid">
