@@ -3,22 +3,25 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Page Not Found - Redirecting</title>
+    <title>404 - Battle Lost Against the Dragon</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=MedievalSharp&display=swap');
+        
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Arial', sans-serif;
-            color: #fff;
+            font-family: 'MedievalSharp', cursive;
+            color: #f0e6d2;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             text-align: center;
             overflow: hidden;
             position: relative;
-            background: url('https://images.unsplash.com/photo-1589254065878-42c9da997008?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+            background: url('https://media.discordapp.net/attachments/1376572093243588740/1401556515462189138/dragon.png?ex=6890b4b8&is=688f6338&hm=a3f159c2b18fac82f50e6cc91c42e324d77dac0d74f432672865c5d1ee4defea&=&format=webp&quality=lossless') no-repeat center center fixed;
             background-size: cover;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
         }
         
         body::before {
@@ -28,60 +31,80 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.6);
             z-index: -1;
         }
         
         .container {
-            max-width: 600px;
-            padding: 2rem;
-            background: rgba(20, 20, 20, 0.85);
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(255, 100, 100, 0.3);
-            border: 1px solid rgba(255, 100, 100, 0.2);
-            backdrop-filter: blur(5px);
+            max-width: 650px;
+            padding: 2.5rem;
+            background: rgba(20, 12, 8, 0.85);
+            border-radius: 5px;
+            box-shadow: 0 0 30px rgba(255, 50, 0, 0.4);
+            border: 2px solid #5a2c0e;
+            backdrop-filter: blur(3px);
+            margin: 1rem;
         }
         
         h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: #ff5555;
-            text-shadow: 0 0 10px rgba(255, 85, 85, 0.5);
-            font-family: 'Georgia', serif;
+            font-size: 3.5rem;
+            margin: 0 0 1.5rem 0;
+            color: #e25822;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #d1a56a;
+            font-style: italic;
         }
         
         p {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
             line-height: 1.6;
         }
         
         .reasons {
             text-align: left;
-            background: rgba(255, 100, 100, 0.1);
-            padding: 1rem;
-            border-radius: 8px;
-            margin: 1.5rem 0;
-            border-left: 3px solid #ff5555;
+            background: rgba(90, 44, 14, 0.3);
+            padding: 1.2rem;
+            border-radius: 5px;
+            margin: 2rem 0;
+            border-left: 4px solid #e25822;
         }
         
         .reasons ul {
-            padding-left: 1.5rem;
+            padding-left: 1.8rem;
+            margin: 0;
         }
         
         .reasons li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            list-style-type: none;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .reasons li:before {
+            content: '⚔';
+            position: absolute;
+            left: 0;
+            color: #e25822;
         }
         
         .spinner {
-            border: 5px solid rgba(255, 255, 255, 0.3);
+            border: 6px solid rgba(226, 88, 34, 0.2);
             border-radius: 50%;
-            border-top: 5px solid #ff5555;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
+            border-top: 6px solid #e25822;
+            width: 60px;
+            height: 60px;
+            animation: spin 1.5s linear infinite;
             margin: 2rem auto;
-            box-shadow: 0 0 10px rgba(255, 85, 85, 0.5);
+            box-shadow: 0 0 15px rgba(226, 88, 34, 0.5);
         }
         
         @keyframes spin {
@@ -90,41 +113,54 @@
         }
         
         a {
-            color: #ff5555;
+            color: #d1a56a;
             text-decoration: none;
             font-weight: bold;
             transition: all 0.3s ease;
+            border-bottom: 2px solid #e25822;
+            padding-bottom: 2px;
         }
         
         a:hover {
-            color: #ff3333;
-            text-shadow: 0 0 5px rgba(255, 85, 85, 0.5);
+            color: #e25822;
+            text-shadow: 0 0 5px rgba(226, 88, 34, 0.7);
         }
         
         .countdown {
             font-weight: bold;
-            color: #ff5555;
-            font-size: 1.3rem;
+            color: #e25822;
+            font-size: 1.5rem;
+            display: inline-block;
+            min-width: 1.5em;
+        }
+        
+        .footer {
+            margin-top: 2rem;
+            font-size: 1rem;
+            color: #8a7a5e;
         }
         
         @media (max-width: 600px) {
-            .container {
-                margin: 1rem;
-                padding: 1.5rem;
-            }
-            
             h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
-            body {
-                background-position: 60% center;
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            p, .reasons li {
+                font-size: 1.1rem;
+            }
+            
+            .container {
+                padding: 1.5rem;
             }
         }
     </style>
     <script>
-        // Countdown and redirect after 7 seconds
-        var seconds = 70;
+        // Countdown and redirect after 15 seconds
+        var seconds = 15;
         function updateCountdown() {
             document.getElementById('countdown').textContent = seconds;
             if (seconds <= 0) {
@@ -139,30 +175,32 @@
             updateCountdown();
             setTimeout(function() {
                 window.location.href = "https://theaurax.github.io";
-            }, 70000);
+            }, 15000);
         };
     </script>
 </head>
 <body>
     <div class="container">
-        <h1>404 - Battle Lost</h1>
-        <p>The page you seek has fallen in battle against the dragon of broken links!</p>
+        <h1>404 - BATTLE LOST</h1>
+        <p class="subtitle">The dragon has scorched this path!</p>
         
         <div class="reasons">
-            <p>This may be because:</p>
+            <p>Your quest failed because:</p>
             <ul>
-                <li>The page has been carried off by the dragon</li>
-                <li>Your map (URL) led you astray</li>
-                <li>The castle (server) is under siege</li>
-                <li>Magic permissions prevent your entry</li>
+                <li>The scroll (page) was burned by dragonfire</li>
+                <li>Your map (URL) led you to the dragon's lair</li>
+                <li>The castle gates (server) are sealed</li>
+                <li>Ancient magic (permissions) bars your way</li>
             </ul>
         </div>
         
-        <p>We're transporting you to safety at <a href="https://theaurax.github.io">theaurax.github.io</a> in <span id="countdown" class="countdown">7</span> seconds.</p>
+        <p>We're opening a portal to <a href="https://theaurax.github.io">theaurax.github.io</a> in <span id="countdown" class="countdown">7</span> seconds...</p>
         
         <div class="spinner"></div>
         
-        <p>If the portal doesn't open, <a href="https://theaurax.github.io">click here</a> to escape manually.</p>
+        <p>If the portal fails, <a href="https://theaurax.github.io">summon it manually</a>.</p>
+        
+        <p class="footer">May your next quest be more fortunate, brave warrior</p>
     </div>
 </body>
 </html>
