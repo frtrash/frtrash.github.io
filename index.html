@@ -2,10 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>AuraX | HOMEPAGE</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>AuraX | Digital Arcane Nexus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- ===== FAVICONS ===== -->
+  <!-- SVG Favicon (Animated) -->
+  <!-- Custom AuraX Favicon (Line 7) -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><filter id='glow'><feGaussianBlur stdDeviation='3'/></filter></defs><path d='M50 15L85 50L50 85L15 50Z' fill='none' stroke='%2300ff00' stroke-width='8' filter='url(%23glow)'/><path d='M30 50H70M50 30V70' stroke='%2300ff00' stroke-width='5'/></svg>">
+  
+  <!-- Apple Touch Icon -->
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='glow'><feGaussianBlur stdDeviation='5'/></filter><circle cx='100' cy='100' r='80' fill='%23000000'/><path d='M100 40L140 160L100 130L60 160Z' fill='none' stroke='%2300ff00' stroke-width='8' filter='url(%23glow)'/></svg>">
+  
+  <!-- ===== STYLES & FONTS ===== -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <meta name="google-site-verification" content="HefEUxzBKd72kpMj3wVh-sggBXluH-xzWcBwMX0G6eA" />
   <style>
     :root {
       --neon-green: #00ff00;
@@ -27,10 +36,10 @@
       align-items: center;
       flex-direction: column;
       position: relative;
-      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%2300ff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>'), auto;
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%2300ff00" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>'), auto;
     }
 
-    /* === CRT SCANLINES & GLITCH === */
+    /* === CRT EFFECTS === */
     .scanline {
       position: absolute;
       top: 0;
@@ -60,7 +69,18 @@
       z-index: 0;
     }
 
-    /* === LOGO === */
+    /* === MAGIC AURA ICON === */
+    .magic-icon {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 60px;
+      height: 60px;
+      z-index: 10;
+      filter: drop-shadow(0 0 5px var(--neon-green));
+    }
+
+    /* === MAIN LOGO === */
     .logo {
       color: var(--neon-green);
       font-size: clamp(3rem, 10vw, 6rem);
@@ -103,7 +123,7 @@
     .info.green { color: var(--neon-green); border-left-color: var(--neon-green); }
     .info.red { color: var(--neon-red); border-left-color: var(--neon-red); }
 
-    /* === MATRIX RAIN (RIGHT SIDE) === */
+    /* === MATRIX RAIN === */
     .matrix-bg {
       position: absolute;
       top: 0;
@@ -114,13 +134,7 @@
       background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
     }
 
-    canvas {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-
-    /* === DEPLOY BUTTON (MAIN ACTION) === */
+    /* === DEPLOY BUTTON === */
     .enter-btn {
       position: absolute;
       right: 25%;
@@ -142,54 +156,13 @@
       animation: showButton 1s ease-in-out 6s forwards;
       color: var(--neon-green);
       letter-spacing: 0.1em;
-      overflow: hidden;
-    }
-
-    .enter-btn::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(
-        to bottom right,
-        rgba(0, 255, 0, 0) 45%,
-        rgba(0, 255, 0, 0.1) 50%,
-        rgba(0, 255, 0, 0) 55%
-      );
-      transform: rotate(30deg);
-      animation: shine 3s infinite;
     }
 
     .enter-btn:hover {
       background: rgba(17, 17, 17, 0.9);
       transform: translateX(50%) scale(1.1) rotate(-1deg);
-      box-shadow: 
-        0 0 20px var(--neon-red),
-        0 0 40px var(--neon-green),
-        0 0 80px rgba(255, 0, 0, 0.5);
+      box-shadow: 0 0 20px var(--neon-red), 0 0 40px var(--neon-green);
       border-color: #fff;
-    }
-
-    .enter-btn:active {
-      transform: translateX(50%) scale(0.95);
-      box-shadow: 0 0 45px var(--neon-red);
-    }
-
-    /* === BREACH WARNING === */
-    .breach-announce {
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
-      font-size: 0.9rem;
-      font-weight: bold;
-      animation: breachBlink 10s infinite;
-      z-index: 2;
-      font-family: 'Share Tech Mono', monospace;
-      padding: 0.5rem;
-      background: rgba(0, 0, 0, 0.7);
-      border-radius: 4px;
     }
 
     /* === ANIMATIONS === */
@@ -201,11 +174,9 @@
       100% { text-shadow: 0 0 6px var(--neon-green), 0 0 12px rgba(0, 68, 0, 0.9); opacity: 1; }
     }
     @keyframes showInfo { from { opacity: 0; transform: translate(0, -50%) translateX(-20px); } to { opacity: 1; transform: translate(0, -50%); } }
-    @keyframes breachBlink { 0%,49% { color: var(--neon-red); text-shadow: 0 0 5px var(--neon-red); } 50%,100% { color: #000; text-shadow: none; } }
-    @keyframes showButton { from { opacity: 0; transform: translateX(50%) translateY(20px); } to { opacity: 1; pointer-events: auto; transform: translateX(50%); } }
     @keyframes scanline { to { background-position: 0 100%; } }
-    @keyframes shine { to { transform: translateX(100%) rotate(30deg); } }
-    @keyframes glitch { 0% { clip-path: inset(0 0 95% 0); } 25% { clip-path: inset(0 0 20% 0); } 50% { clip-path: inset(0 0 50% 0); } 75% { clip-path: inset(0 0 15% 0); } 100% { clip-path: inset(0 0 85% 0); } }
+    @keyframes showButton { from { opacity: 0; transform: translateX(50%) translateY(20px); } to { opacity: 1; pointer-events: auto; transform: translateX(50%); } }
+    @keyframes glitch { 0% { clip-path: inset(0 0 95% 0); } 25% { clip-path: inset(0 0 20% 0); } 50% { clip-path: inset(0 0 50% 0); } 100% { clip-path: inset(0 0 85% 0); } }
   </style>
 </head>
 <body>
@@ -214,6 +185,23 @@
   <div class="glitch-overlay"></div>
   <div class="matrix-bg">
     <canvas id="matrix"></canvas>
+  </div>
+
+  <!-- === MAGIC AURA ICON === -->
+  <div class="magic-icon">
+    <svg width="100%" height="100%" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="auraGlow" cx="50%" cy="50%" r="70%">
+          <stop offset="0%" stop-color="#7e00ff" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#00f7ff" stop-opacity="0.2"/>
+        </radialGradient>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="5"/>
+        </filter>
+      </defs>
+      <circle cx="100" cy="100" r="70" fill="none" stroke="url(#auraGlow)" stroke-width="4" stroke-dasharray="5 3" opacity="0.7"/>
+      <path d="M100 40L140 160L100 130L60 160Z" fill="none" stroke="#00ff00" stroke-width="8" stroke-linejoin="round" filter="url(#glow)"/>
+    </svg>
   </div>
 
   <!-- === MAIN CONTENT === -->
@@ -236,8 +224,7 @@
     const phrases = [
       "BREACHED", "FIREWALL DOWN", "INITIATING SECURITY MECHANISM",
       "OVERRIDE ENABLED", "AmitBhai", "ERROR 0101",
-      "REBOOTING CORE", "AmitBhai", "ACCESS GRANTED",
-      "SYSTEM COMPROMISED", "DATA STREAM ACTIVE", "TERMINAL ONLINE"
+      "REBOOTING CORE", "ACCESS GRANTED", "TERMINAL ONLINE"
     ];
 
     const fontSize = 14;
@@ -266,7 +253,7 @@
     }
     setInterval(drawMatrix, 60);
 
-    // === COLOR SWITCHER (RED/GREEN) ===
+    // === COLOR SWITCHER ===
     const infoBox = document.getElementById('infoBox');
     const matrixBtn = document.getElementById('matrixBtn');
     let isRed = true;
@@ -276,14 +263,12 @@
       matrixColor = isRed ? "rgba(255, 0, 0, 0.7)" : "rgba(0, 255, 0, 0.6)";
       matrixBtn.style.color = isRed ? 'var(--neon-green)' : 'var(--dark-red)';
       matrixBtn.style.borderColor = isRed ? 'var(--neon-green)' : 'var(--dark-red)';
-      matrixBtn.style.textShadow = isRed ? '0 0 5px var(--neon-green)' : '0 0 5px var(--dark-red)';
-      matrixBtn.style.boxShadow = isRed ? '0 0 15px var(--neon-green)' : '0 0 15px var(--dark-red)';
       infoBox.classList.remove('red', 'green');
       infoBox.classList.add(isRed ? 'red' : 'green');
     }
     setInterval(updateMatrixColor, 15000);
 
-    // === TERMINAL TYPEWRITER EFFECT ===
+    // === TERMINAL TYPEWRITER ===
     const terminalText = [
       "> Welcome to AuraX — the next-gen digital arsenal.",
       "> Deploying tactical-grade web utilities...",
@@ -304,9 +289,8 @@
       }
     }, 20);
 
-    // === DEPLOY BUTTON REDIRECT ===
+    // === DEPLOY BUTTON ===
     matrixBtn.addEventListener('click', () => {
-      // Glitch effect before redirect
       document.body.style.animation = "glitch 0.5s linear";
       setTimeout(() => {
         window.location.href = "deploy.html";
