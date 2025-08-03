@@ -16,49 +16,79 @@
       font-family: 'Orbitron', sans-serif;
       display: flex;
       height: 100vh;
-      background-color: #0e0e0e;
+      background-color: #000;
       color: #ffffff;
+      overflow: hidden;
     }
 
     .sidebar {
-      width: 250px;
-      background-color: #1a1a1a;
-      padding: 2rem 1rem;
+      width: 60px;
+      background-color: #0a0a0a;
+      padding: 1rem 0.5rem;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
-      border-right: 2px solid #333;
+      align-items: center;
+      border-right: 2px solid #1a1a1a;
+      transition: width 0.3s ease;
+      overflow: hidden;
     }
 
-    .sidebar h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: #00ffe7;
+    .sidebar:hover {
+      width: 200px;
+      align-items: flex-start;
     }
 
     .sidebar a {
-      color: #bbb;
+      color: #ccc;
       text-decoration: none;
-      padding: 0.5rem;
+      padding: 0.75rem 1rem;
       border-radius: 4px;
       transition: background 0.2s;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sidebar-text {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .sidebar:hover .sidebar-text {
+      opacity: 1;
     }
 
     .sidebar a:hover {
-      background-color: #2e2e2e;
+      background-color: #1a1a1a;
       color: #00ffe7;
+    }
+
+    .sidebar-icon {
+      font-size: 1.25rem;
+      width: 24px;
+      text-align: center;
     }
 
     .main-content {
       flex-grow: 1;
       padding: 2rem;
       overflow-y: auto;
+      position: relative;
     }
 
-    .main-content h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #00ffe7;
+    .logo-top {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #fff;
+      animation: slideTop 1.2s ease-out;
+      margin-bottom: 2rem;
+    }
+
+    @keyframes slideTop {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
 
     .game-grid {
@@ -68,17 +98,17 @@
     }
 
     .game-card {
-      background-color: #1f1f1f;
+      background-color: #0f0f0f;
       padding: 1rem;
       border-radius: 10px;
       text-align: center;
       transition: transform 0.3s;
-      border: 1px solid #333;
+      border: 1px solid #222;
     }
 
     .game-card:hover {
       transform: scale(1.05);
-      border-color: #00ffe7;
+      border-color: #444;
     }
 
     .game-card h3 {
@@ -88,38 +118,38 @@
 
     .game-card p {
       font-size: 0.875rem;
-      color: #aaa;
+      color: #999;
     }
 
     .game-card button {
       margin-top: 1rem;
       padding: 0.5rem 1rem;
       font-size: 1rem;
-      background-color: #00ffe7;
-      border: none;
-      color: #000;
+      background-color: #111;
+      border: 1px solid #444;
+      color: #fff;
       font-weight: bold;
       border-radius: 5px;
       cursor: pointer;
     }
 
     .game-card button:hover {
-      background-color: #00d4c1;
+      background-color: #222;
     }
   </style>
 </head>
 <body>
   <div class="sidebar">
-    <h2>Categories</h2>
-    <a href="#">All Games</a>
-    <a href="#">Action</a>
-    <a href="#">Puzzle</a>
-    <a href="#">Arcade</a>
-    <a href="#">Strategy</a>
-    <a href="#">Hacker</a>
+    <a href="#"><span class="sidebar-icon">🎮</span><span class="sidebar-text">All Games</span></a>
+    <a href="#"><span class="sidebar-icon">⚔️</span><span class="sidebar-text">Action</span></a>
+    <a href="#"><span class="sidebar-icon">🧩</span><span class="sidebar-text">Puzzle</span></a>
+    <a href="#"><span class="sidebar-icon">🕹️</span><span class="sidebar-text">Arcade</span></a>
+    <a href="#"><span class="sidebar-icon">♟️</span><span class="sidebar-text">Strategy</span></a>
+    <a href="#"><span class="sidebar-icon">💻</span><span class="sidebar-text">Hacker</span></a>
   </div>
+
   <div class="main-content">
-    <h1>Welcome to AuraX Games</h1>
+    <div class="logo-top">AuraX Games Hub</div>
     <div class="game-grid">
       <div class="game-card">
         <h3>Neon Runner</h3>
