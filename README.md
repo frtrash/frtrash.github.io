@@ -2,7 +2,7 @@
 
 **AuraX** is a next-gen gaming and utility hub. Designed for cyberwarfare-grade performance, it delivers immersive, in-browser experiences with no fluff — just pure utility, style, and power.
 
-![AuraX Logo](aurax-icon.png)
+![AuraX Logo]()
 
 ---
 
