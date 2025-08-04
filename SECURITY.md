@@ -8,8 +8,9 @@ Security matters to us. If you’re digging around AuraX and notice something th
 
 If you find something serious, like a way to access user data, bypass limits, or break stuff that shouldn’t break:
 
-Email us directly: security@theaurax.in  
-Or use GitHub’s private advisory feature if you prefer.
+
+Use GitHub’s private advisory feature if you prefer.
+or DM me in discord -->
 
 Please don’t post it publicly until we’ve had time to review and respond.
 
