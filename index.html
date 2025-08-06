@@ -1,312 +1,319 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5FTGKT64NP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-5FTGKT64NP');
-</script>
-
   <meta charset="UTF-8">
-  <title>AuraX | Digital Arcane Nexus</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- ===== FAVICONS ===== -->
-  <!-- SVG Favicon (Animated) -->
-  <!-- Custom AuraX Favicon (Line 7) -->
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><filter id='glow'><feGaussianBlur stdDeviation='3'/></filter></defs><path d='M50 15L85 50L50 85L15 50Z' fill='none' stroke='%2300ff00' stroke-width='8' filter='url(%23glow)'/><path d='M30 50H70M50 30V70' stroke='%2300ff00' stroke-width='5'/></svg>">
-  
-  <!-- Apple Touch Icon -->
-  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='glow'><feGaussianBlur stdDeviation='5'/></filter><circle cx='100' cy='100' r='80' fill='%23000000'/><path d='M100 40L140 160L100 130L60 160Z' fill='none' stroke='%2300ff00' stroke-width='8' filter='url(%23glow)'/></svg>">
-  
-  <!-- ===== STYLES & FONTS ===== -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <meta name="description" content="Meteor - A platform for EPIC file conversions, Minecraft adventures, and community engagement.">
+  <meta name="keywords" content="Meteor, file conversion, Minecraft server, community, tutorials, bloody theme">
+  <meta name="author" content="Meteor">
+  <meta name="robots" content="index, follow">
+  <title>Meteor - Utensils</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%238b0000' stroke-width='8'/%3E%3Ccircle cx='50' cy='50' r='20' fill='%2300ccff'/%3E%3Cpath d='M50 10 L60 30 L80 35 L65 50 L70 70 L50 60 L30 70 L35 50 L20 35 L40 30 Z' fill='%238b0000'/%3E%3C/svg%3E">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    :root {
-      --neon-green: #00ff00;
-      --neon-red: #ff0000;
-      --dark-red: #8b0000;
-      --matrix-speed: 60ms;
-      --glitch-duration: 0.3s;
-    }
-    
     body {
+      background-color: #0a0a1a;
+      color: #ffffff;
+      font-family: 'Arial', sans-serif;
       margin: 0;
       padding: 0;
-      height: 100vh;
-      background: #000;
-      overflow: hidden;
-      font-family: 'Orbitron', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+      overflow-x: hidden;
+    }
+    .netflix-btn {
+      background-color: #8b0000;
+      color: #ffffff;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.25rem;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    .netflix-btn:hover {
+      background-color: #4b0082;
+      transform: scale(1.05);
+    }
+    .tile {
+      transition: all 0.4s ease;
       position: relative;
-      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%2300ff00" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>'), auto;
+      overflow: hidden;
+      border-radius: 0.5rem;
     }
-
-    /* === CRT EFFECTS === */
-    .scanline {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: repeating-linear-gradient(
-        to bottom,
-        transparent 0%,
-        rgba(0, 255, 0, 0.05) 0.5%,
-        transparent 1%
-      );
-      background-size: 100% 8px;
-      animation: scanline 8s linear infinite;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .glitch-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
-      opacity: 0.1;
-      z-index: 0;
-    }
-
-    /* === MAGIC AURA ICON === */
-    .magic-icon {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 60px;
-      height: 60px;
+    .tile:hover {
+      transform: scale(1.15);
       z-index: 10;
-      filter: drop-shadow(0 0 5px var(--neon-green));
+      box-shadow: 0 0 20px rgba(139, 0, 0, 0.5);
     }
-
-    /* === MAIN LOGO === */
-    .logo {
-      color: var(--neon-green);
-      font-size: clamp(3rem, 10vw, 6rem);
-      font-weight: 900;
-      opacity: 0;
-      transform: translateY(0);
-      animation: 
-        appearCenter 1s ease-out 1s forwards,
-        moveUp 1.2s ease-in-out 2.2s forwards,
-        shrink 0.5s ease-in-out 3.6s forwards,
-        eeriePulse 2s ease-in-out 4.2s infinite alternate;
-      z-index: 2;
-      text-transform: uppercase;
-      letter-spacing: 0.3em;
-      margin-right: -0.3em;
-    }
-
-    /* === TERMINAL TEXT === */
-    .info {
-      font-size: clamp(1rem, 1.5vw, 1.25rem);
-      opacity: 0;
-      position: absolute;
-      top: 55%;
-      left: 5%;
-      transform: translate(0, -50%);
-      text-align: left;
-      width: 80%;
-      max-width: 600px;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 1.5rem;
-      z-index: 2;
-      border-left: 3px solid var(--neon-green);
-      font-family: 'Share Tech Mono', monospace;
-      line-height: 1.6;
-      box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
-      border-radius: 0 8px 8px 0;
-      animation: showInfo 1s ease-in-out 5s forwards;
-    }
-
-    .info.green { color: var(--neon-green); border-left-color: var(--neon-green); }
-    .info.red { color: var(--neon-red); border-left-color: var(--neon-red); }
-
-    /* === MATRIX RAIN === */
-    .matrix-bg {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 50%;
+    .tile img {
+      border: 2px solid #4b0082;
+      border-radius: 0.5rem;
+      object-fit: cover;
+      width: 100%;
       height: 100%;
-      z-index: 0;
-      background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+      background-color: #1a1a2e; /* Dark background for all images */
     }
-
-    /* === DEPLOY BUTTON === */
-    .enter-btn {
+    .tile-overlay {
       position: absolute;
-      right: 25%;
-      top: 65%;
-      transform: translateX(50%);
-      font-size: clamp(1rem, 2vw, 1.5rem);
-      padding: 1rem 2rem;
-      font-family: 'Orbitron', sans-serif;
-      background: rgba(0, 0, 0, 0.8);
-      border: 2px solid var(--neon-green);
-      cursor: pointer;
-      z-index: 3;
-      text-shadow: 0 0 5px var(--neon-green);
-      box-shadow: 0 0 15px var(--neon-green);
-      transition: all 0.3s ease;
-      border-radius: 8px;
-      opacity: 0;
-      pointer-events: none;
-      animation: showButton 1s ease-in-out 6s forwards;
-      color: var(--neon-green);
-      letter-spacing: 0.1em;
+      bottom: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 1rem;
+      transition: background-color 0.3s;
     }
-
-    .enter-btn:hover {
-      background: rgba(17, 17, 17, 0.9);
-      transform: translateX(50%) scale(1.1) rotate(-1deg);
-      box-shadow: 0 0 20px var(--neon-red), 0 0 40px var(--neon-green);
-      border-color: #fff;
+    .tile:hover .tile-overlay {
+      background-color: rgba(0, 0, 0, 0.8);
     }
-
-    /* === ANIMATIONS === */
-    @keyframes appearCenter { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes moveUp { from { transform: translateY(0); } to { transform: translateY(-40vh); } }
-    @keyframes shrink { from { transform: translateY(-40vh) scale(1); } to { transform: translateY(-40vh) scale(0.85); } }
-    @keyframes eeriePulse {
-      0% { text-shadow: 0 0 4px var(--neon-green), 0 0 8px rgba(0, 51, 0, 0.7); opacity: 0.95; }
-      100% { text-shadow: 0 0 6px var(--neon-green), 0 0 12px rgba(0, 68, 0, 0.9); opacity: 1; }
+    .section-title {
+      text-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
     }
-    @keyframes showInfo { from { opacity: 0; transform: translate(0, -50%) translateX(-20px); } to { opacity: 1; transform: translate(0, -50%); } }
-    @keyframes scanline { to { background-position: 0 100%; } }
-    @keyframes showButton { from { opacity: 0; transform: translateX(50%) translateY(20px); } to { opacity: 1; pointer-events: auto; transform: translateX(50%); } }
-    @keyframes glitch { 0% { clip-path: inset(0 0 95% 0); } 25% { clip-path: inset(0 0 20% 0); } 50% { clip-path: inset(0 0 50% 0); } 100% { clip-path: inset(0 0 85% 0); } }
+    nav {
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+    .popup {
+      background-color: #1a1a2e;
+      border: 2px solid #8b0000;
+      border-radius: 0.5rem;
+    }
+    .loading-bar {
+      background-color: #4b0082;
+      height: 4px;
+      border-radius: 2px;
+    }
+    .minecraft-logo {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 2rem;
+      color: #3cff00;
+      text-shadow: 2px 2px #000;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
   </style>
 </head>
 <body>
-  <!-- === VISUAL EFFECTS === -->
-  <div class="scanline"></div>
-  <div class="glitch-overlay"></div>
-  <div class="matrix-bg">
-    <canvas id="matrix"></canvas>
+  <!-- Background Music -->
+  <audio id="background-music" src="song101.mp3" autoplay loop></audio>
+  <!-- Header -->
+  <header class="fixed top-0 w-full bg-black bg-opacity-90 z-10">
+    <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="/" class="text-3xl font-bold text-red-900" aria-label="Meteor Home">METEOR</a>
+      <ul class="flex space-x-6">
+        <li><a href="#hero" class="text-white hover:text-red-900 transition">Hero</a></li>
+        <li><a href="#utensils" class="text-white hover:text-red-900 transition">Utensils</a></li>
+        <li><a href="#community" class="text-white hover:text-red-900 transition">Community</a></li>
+        <li><a href="#minecraft" class="text-white hover:text-red-900 transition">Minecraft</a></li>
+        <li><a href="#tutorials" class="text-white hover:text-red-900 transition">Tutorials</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="pt-20">
+    <!-- Hero Section -->
+    <section id="hero" class="relative h-screen flex items-center justify-center">
+      <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1618005182380-5c7f8f64c707?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); opacity: 0.5;"></div>
+      <div class="relative text-center">
+        <h1 class="text-5xl md:text-7xl font-bold text-white mb-4">Unleash Your Power with METEOR</h1>
+        <p class="text-xl md:text-2xl text-gray-300 mb-6">A platform for EPIC file conversions, Minecraft adventures, and a thriving community.</p>
+        <a href="#utensils" class="netflix-btn text-lg" aria-label="Explore Utensils">Explore Utensils</a>
+      </div>
+    </section>
+
+    <!-- Utensils Section -->
+    <section id="utensils" class="py-12">
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-white mb-8 text-center section-title">Utensils</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div class="tile">
+            <a href="/conversion.html" aria-label="File Conversion Tool">
+              <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80" alt="File Conversion Tool" class="w-full h-64">
+              <div class="tile-overlay">
+                <h3 class="text-lg font-semibold text-white">File Conversion</h3>
+                <p class="text-sm text-gray-300">Convert images, PDFs, Word, and Excel files with ease.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community" class="py-12 bg-gray-900">
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-white mb-8 text-center section-title">Community</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div class="tile">
+            <a href="https://github.com/meteoryx/meteoryx.github.io" target="_blank" aria-label="Contribute to Meteor on GitHub">
+              <img src="https://img.icons8.com/?size=100&id=LoL4bFzqmAa0&format=png&color=000000" alt="GitHub Community" class="w-40 h-40 mx-auto bg-gray-900 p-4">
+              <div class="tile-overlay">
+                <h3 class="text-lg font-semibold text-white">GitHub Community</h3>
+                <p class="text-sm text-gray-300">Contribute to Meteor on GitHub.</p>
+              </div>
+            </a>
+          </div>
+          <div class="tile">
+            <a href="#" aria-label="Connect with Meteor users on Discord">
+              <img src="https://img.icons8.com/?size=100&id=D2NqKl85S8Ye&format=png&color=000000" alt="Discord Community" class="w-40 h-40 mx-auto bg-gray-900 p-4">
+              <div class="tile-overlay">
+                <h3 class="text-lg font-semibold text-white">Discord Community</h3>
+                <p class="text-sm text-gray-300">Connect with Meteor users on Discord.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Minecraft Server Section -->
+    <section id="minecraft" class="py-12">
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-white mb-8 text-center section-title">Minecraft Server</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div class="tile">
+            <a href="minecraftserver.html" aria-label="Join Meteor Minecraft Server">
+              <img src="a1bf9bb7-6ba5-40de-bc95-16f639d9ebf3.jpg" alt="Meteor Minecraft Server" class="w-full h-64 bg-gray-900">
+              <div class="tile-overlay">
+                <h3 class="text-lg font-semibold text-white">Meteor Minecraft Server</h3>
+                <p class="text-sm text-gray-300">Join our cracked + premium Minecraft server!</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tutorials & Documentation Section -->
+    <section id="tutorials" class="py-12 bg-gray-900">
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-white mb-8 text-center section-title">Tutorials & Documentation</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div class="tile">
+            <a href="/docs.html" aria-label="Tutorials and Documentation">
+              <img src="https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Ft3.ftcdn.net%2Fjpg%2F03%2F45%2F34%2F46%2F360_F_345344681_CzN5Rzxqaon2YHQ0SD1xZguIyqScdUzf.jpg&sp=1754498678Te877c993c6f0e2e15b4c63a7da009c6641a1c0b10afb055310f7eb081d63ed44" alt="Tutorials and Documentation" class="w-full h-64 bg-gray-900">
+              <div class="tile-overlay">
+                <h3 class="text-lg font-semibold text-white">Tutorials & Documentation</h3>
+                <p class="text-sm text-gray-300">Learn how to use Meteor’s features.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Popup for File Conversion -->
+  <div id="popup" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-20">
+    <div class="popup p-6 max-w-md w-full">
+      <h2 id="popup-title" class="text-2xl font-bold text-white mb-4"></h2>
+      <input type="file" id="file-input" class="mb-4 w-full text-gray-300">
+      <div id="preview" class="mb-4 hidden">
+        <img id="preview-image" class="w-full h-40 object-cover rounded" alt="File Preview">
+      </div>
+      <div class="loading-bar w-full mb-4 hidden"></div>
+      <button class="netflix-btn w-full" onclick="convertFile()">Convert</button>
+      <button class="netflix-btn mt-2 w-full" onclick="closePopup()">Close</button>
+    </div>
   </div>
 
-  <!-- === MAGIC AURA ICON === -->
-  <div class="magic-icon">
-    <svg width="100%" height="100%" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <radialGradient id="auraGlow" cx="50%" cy="50%" r="70%">
-          <stop offset="0%" stop-color="#7e00ff" stop-opacity="0.8"/>
-          <stop offset="100%" stop-color="#00f7ff" stop-opacity="0.2"/>
-        </radialGradient>
-        <filter id="glow">
-          <feGaussianBlur stdDeviation="5"/>
-        </filter>
-      </defs>
-      <circle cx="100" cy="100" r="70" fill="none" stroke="url(#auraGlow)" stroke-width="4" stroke-dasharray="5 3" opacity="0.7"/>
-      <path d="M100 40L140 160L100 130L60 160Z" fill="none" stroke="#00ff00" stroke-width="8" stroke-linejoin="round" filter="url(#glow)"/>
-    </svg>
-  </div>
-
-  <!-- === MAIN CONTENT === -->
-  <div class="logo">AuraX</div>
-  <div class="info red" id="infoBox"></div>
-  <div class="breach-announce">AmitBhai has breached the system.</div>
-  <button class="enter-btn" id="matrixBtn">⚡ DEPLOY</button>
+  <footer class="bg-black py-6">
+    <div class="container mx-auto px-4 text-center text-gray-300">
+      <p>© 2025 Meteor. All Rights Reserved.</p>
+      <p><a href="https://github.com/meteoryx/meteoryx.github.io" target="_blank" class="text-red-900 hover:text-purple-900 transition">GitHub</a></p>
+    </div>
+  </footer>
 
   <script>
-    // === MATRIX RAIN ===
-    const canvas = document.getElementById('matrix');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth / 2;
-    canvas.height = window.innerHeight;
-    window.addEventListener('resize', () => {
-      canvas.width = window.innerWidth / 2;
-      canvas.height = window.innerHeight;
-    });
+    // Conversion Logic
+    const conversionHistory = [];
 
-    const phrases = [
-      "BREACHED", "FIREWALL DOWN", "INITIATING SECURITY MECHANISM",
-      "OVERRIDE ENABLED", "AmitBhai", "ERROR 0101",
-      "REBOOTING CORE", "ACCESS GRANTED", "TERMINAL ONLINE"
-    ];
+    function openPopup(type) {
+      document.getElementById('popup').classList.remove('hidden');
+      document.getElementById('popup-title').textContent = `${type.charAt(0).toUpperCase() + type.slice(1)} Conversion`;
+      document.getElementById('file-input').accept = getAcceptType(type);
+      document.getElementById('file-input').dataset.type = type;
+      document.getElementById('preview').classList.add('hidden');
+    }
 
-    const fontSize = 14;
-    const columns = Math.floor(canvas.width / fontSize);
-    const drops = Array(columns).fill(1);
-    let matrixColor = "rgba(255, 0, 0, 0.7)";
+    function closePopup() {
+      document.getElementById('popup').classList.add('hidden');
+      document.getElementById('file-input').value = '';
+      document.getElementById('preview').classList.add('hidden');
+    }
 
-    function drawMatrix() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = matrixColor;
-      ctx.font = `${fontSize}px 'Share Tech Mono', monospace`;
-
-      for (let i = 0; i < drops.length; i++) {
-        const text = Math.random() > 0.3 
-          ? phrases[Math.floor(Math.random() * phrases.length)] 
-          : String.fromCharCode(Math.random() * 128);
-        
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-        
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0;
-        }
-        drops[i]++;
+    function getAcceptType(type) {
+      switch (type) {
+        case 'image': return 'image/*';
+        case 'pdf': return '.pdf';
+        case 'word': return '.doc,.docx';
+        case 'excel': return '.xls,.xlsx';
+        default: return '*';
       }
     }
-    setInterval(drawMatrix, 60);
 
-    // === COLOR SWITCHER ===
-    const infoBox = document.getElementById('infoBox');
-    const matrixBtn = document.getElementById('matrixBtn');
-    let isRed = true;
-
-    function updateMatrixColor() {
-      isRed = !isRed;
-      matrixColor = isRed ? "rgba(255, 0, 0, 0.7)" : "rgba(0, 255, 0, 0.6)";
-      matrixBtn.style.color = isRed ? 'var(--neon-green)' : 'var(--dark-red)';
-      matrixBtn.style.borderColor = isRed ? 'var(--neon-green)' : 'var(--dark-red)';
-      infoBox.classList.remove('red', 'green');
-      infoBox.classList.add(isRed ? 'red' : 'green');
-    }
-    setInterval(updateMatrixColor, 15000);
-
-    // === TERMINAL TYPEWRITER ===
-    const terminalText = [
-      "> Welcome to AuraX — the next-gen digital arsenal.",
-      "> Deploying tactical-grade web utilities...",
-      "> Initiating immersive in-browser experiences...",
-      "> Games. Tools. Exploits. All within your reach.",
-      "> Encrypted services now operational...",
-      "> AuraX core stabilized and monitoring activity..."
-    ].join("<br>");
-
-    infoBox.innerHTML = "";
-    let charIndex = 0;
-    const typeInterval = setInterval(() => {
-      if (charIndex < terminalText.length) {
-        infoBox.innerHTML += terminalText.charAt(charIndex);
-        charIndex++;
-      } else {
-        clearInterval(typeInterval);
+    function convertFile() {
+      const fileInput = document.getElementById('file-input');
+      const type = fileInput.dataset.type;
+      const file = fileInput.files[0];
+      if (!file) {
+        alert('Please select a file');
+        return;
       }
-    }, 20);
 
-    // === DEPLOY BUTTON ===
-    matrixBtn.addEventListener('click', () => {
-      document.body.style.animation = "glitch 0.5s linear";
+      const loadingBar = document.querySelector('.loading-bar');
+      loadingBar.classList.remove('hidden');
       setTimeout(() => {
-        window.location.href = "deploy.html";
-      }, 500);
+        loadingBar.style.width = '100%';
+        setTimeout(() => {
+          const outputUrl = URL.createObjectURL(file); // Placeholder for actual conversion
+          addToHistory(file.name, outputUrl, type);
+          loadingBar.classList.add('hidden');
+          loadingBar.style.width = '0';
+          closePopup();
+          triggerSoundEffect();
+          if (confirm('Download converted file?')) {
+            const a = document.createElement('a');
+            a.href = outputUrl;
+            a.download = `converted_${file.name}`;
+            a.click();
+          }
+        }, 2000);
+      }, 100);
+
+      // Image Preview
+      if (type === 'image') {
+        const preview = document.getElementById('preview');
+        const previewImage = document.getElementById('preview-image');
+        previewImage.src = URL.createObjectURL(file);
+        preview.classList.remove('hidden');
+      }
+    }
+
+    function addToHistory(filename, url, type) {
+      conversionHistory.unshift({ filename, url, type, date: new Date().toLocaleString() });
+      if (conversionHistory.length > 2) conversionHistory.pop();
+    }
+
+    function triggerSoundEffect() {
+      const audio = new Audio('zvuk-litvina.mp3');
+      audio.play().catch(error => console.log('Sound playback failed:', error));
+    }
+
+    // Drag and Drop
+    document.addEventListener('dragover', e => e.preventDefault());
+    document.addEventListener('drop', e => {
+      e.preventDefault();
+      const file = e.dataTransfer.files[0];
+      if (file) {
+        const type = document.getElementById('file-input').dataset.type || 'image';
+        document.getElementById('file-input').files = e.dataTransfer.files;
+        if (type === 'image') {
+          const preview = document.getElementById('preview');
+          const previewImage = document.getElementById('preview-image');
+          previewImage.src = URL.createObjectURL(file);
+          preview.classList.remove('hidden');
+        }
+      }
     });
+
+    // Background music control
+    document.getElementById('background-music').volume = 0.5; // Set to 50% volume
   </script>
 </body>
 </html>
