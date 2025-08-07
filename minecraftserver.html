@@ -1,2 +1,532 @@
-Play now: meteor.sdlf.fun
-JAVA: 1.8 -> 1.21.7
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" referrerpolicy="no-referrer" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+    <title>🌠 Meteor | Galactic Survival [1.21.4+]</title>
+    <meta content="Looking for an epic survival server with an active community? Meteor offers an experience you won’t find anywhere else! 🌍" name="description"/>
+    <meta content="xAI Grok" name="generator"/>
+    <meta content="minecraft, server, meteor, survival, origin, pvp, gaming" name="keywords"/>
+    <link href="/images/logo.png" rel="icon"/>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #000000, #4b0082);
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        .fixed-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+        }
+        .fixed-bg div {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(16,185,129,0.1), transparent 50%);
+        }
+        .fixed-bg div:nth-child(2) {
+            background: radial-gradient(circle at 80% 20%, rgba(59,130,246,0.1), transparent 50%);
+        }
+        .fixed-bg div:nth-child(3) {
+            background: radial-gradient(circle at 40% 40%, rgba(139,92,246,0.05), transparent 50%);
+        }
+        .pulse-dot {
+            position: absolute;
+            background: #ff4500;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+        .pulse-dot:nth-child(2) { background: #ff8c00; animation-delay: 0.5s; }
+        .pulse-dot:nth-child(3) { background: #8b0000; animation-delay: 1s; }
+        @keyframes pulse {
+            0% { transform: scale(0.5); opacity: 0.3; }
+            50% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(0.5); opacity: 0.3; }
+        }
+        .animate-fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .animate-slide-up {
+            animation: slideUp 1s ease-out;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .animate-fade-in-delay {
+            animation: fadeIn 1s ease-in 0.5s backwards;
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-glow {
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 5px #ff4500; }
+            to { text-shadow: 0 0 10px #ff8c00, 0 0 15px #ff4500; }
+        }
+        .neon-border-hover {
+            transition: box-shadow 0.3s, border-color 0.3s;
+        }
+        .neon-border-hover:hover {
+            box-shadow: 0 0 10px #ff4500;
+            border-color: #ff4500;
+        }
+        .group:hover .icon-bg {
+            transform: scale(1.1) rotate(6deg);
+        }
+    </style>
+    <script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+            return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+            if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+                try {
+                    var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                    var firstSheetName = workbook.SheetNames[0];
+                    var worksheet = workbook.Sheets[firstSheetName];
+                    var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                    var filteredData = jsonData.filter(row => row.some(filledCell));
+                    var headerRowIndex = filteredData.findIndex((row, index) =>
+                        row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                    );
+                    if (headerRowIndex === -1 || headerRowIndex > 25) {
+                        headerRowIndex = 0;
+                    }
+                    var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex));
+                    csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                    return csv;
+                } catch (e) {
+                    console.error(e);
+                    return "";
+                }
+            }
+            return gk_fileData[filename] || "";
+        }
+    </script>
+</head>
+<body class="__className_e8ce0c">
+<div class="fixed-bg">
+    <div></div><div></div><div></div>
+    <div class="top-1/4 left-1/4 w-2 h-2 pulse-dot"></div>
+    <div class="top-3/4 right-1/4 w-1 h-1 pulse-dot"></div>
+    <div class="top-1/2 right-1/3 w-1.5 h-1.5 pulse-dot"></div>
+</div>
+<div class="relative z-10">
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-transparent">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <a class="flex items-center gap-4 group" href="/">
+                    <div class="relative">
+                        <img alt="Meteor Logo" class="rounded-2xl group-hover:scale-110 transition-transform duration-300" data-nimg="1" decoding="async" height="48" loading="lazy" src="/images/logo.png" style="color:transparent" width="48"/>
+                        <div class="absolute -top-1 -right-1 w-4 h-4 bg-ff4500 rounded-full animate-pulse"></div>
+                    </div>
+                    <div>
+                        <h1 class="text-3xl font-black text-white group-hover:text-ff8c00 transition-colors duration-300">Meteor</h1>
+                        <p class="text-sm text-ff4500 font-bold">Galactic Survival • 1.21.4+</p>
+                    </div>
+                </a>
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a class="group flex items-center gap-3 text-gray-300 hover:text-ff4500 transition-all duration-300 font-bold text-lg relative" href="/">
+                        <svg class="lucide lucide-house w-5 h-5 group-hover:scale-110 transition-transform duration-300" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>Home
+                        <div class="absolute -bottom-2 left-0 w-0 h-0.5 bg-ff4500 group-hover:w-full transition-all duration-300"></div>
+                    </a>
+                    <a class="group flex items-center gap-3 text-gray-300 hover:text-ff4500 transition-all duration-300 font-bold text-lg relative" href="/vote">
+                        <svg class="lucide lucide-vote w-5 h-5 group-hover:scale-110 transition-transform duration-300" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m9 12 2 2 4-4"></path><path d="M5 7c0-1.1.9-2 2-2h10a2 2 0 0 1 2 2v12H5V7Z"></path><path d="M22 19H2"></path></svg>Vote
+                        <div class="absolute -bottom-2 left-0 w-0 h-0.5 bg-ff4500 group-hover:w-full transition-all duration-300"></div>
+                    </a>
+                    <a class="group flex items-center gap-3 text-gray-300 hover:text-ff4500 transition-all duration-300 font-bold text-lg relative" href="/staff">
+                        <svg class="lucide lucide-users w-5 h-5 group-hover:scale-110 transition-transform duration-300" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>Staff
+                        <div class="absolute -bottom-2 left-0 w-0 h-0.5 bg-ff4500 group-hover:w-full transition-all duration-300"></div>
+                    </a>
+                    <a class="group flex items-center gap-3 text-gray-300 hover:text-ff4500 transition-all duration-300 font-bold text-lg relative" href="/store">
+                        <svg class="lucide lucide-shopping-bag w-5 h-5 group-hover:scale-110 transition-transform duration-300" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>Store
+                        <div class="absolute -bottom-2 left-0 w-0 h-0.5 bg-ff4500 group-hover:w-full transition-all duration-300"></div>
+                    </a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <a href="https://discord.gg/meteor" rel="noopener noreferrer" target="_blank">
+                        <button class="items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:text-accent-foreground h-9 hidden sm:flex border-2 border-ff4500/30 text-ff4500 hover:bg-ff4500/10 bg-transparent font-bold px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"></path></svg>Discord
+                        </button>
+                    </a>
+                    <button aria-controls="radix-«R5hhtb»" aria-expanded="false" aria-haspopup="dialog" class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent h-9 rounded-md lg:hidden text-gray-300 hover:text-ff4500 p-3" data-state="closed" type="button">
+                        <svg class="lucide lucide-menu w-6 h-6" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="relative py-16 lg:py-24 overflow-hidden">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center max-w-6xl mx-auto">
+                <div class="inline-flex items-center gap-2 bg-lime-500/10 backdrop-blur-sm border border-lime-500/20 rounded-full px-6 py-3 mb-8 animate-fade-in hover:bg-lime-500/20 transition-all duration-300">
+                    <div class="w-2 h-2 bg-lime-400 rounded-full animate-pulse"></div>
+                    <span class="text-lime-400 font-semibold">Server is online • </span><span class="animate-pulse">Loading...</span>
+                </div>
+                <h1 class="text-7xl md:text-9xl font-black text-white mb-8 tracking-tight animate-slide-up">Meteor<span class="text-lime-400 animate-glow">Galactic</span></h1>
+                <p class="text-2xl md:text-3xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed animate-fade-in-delay">Awaits you a <span class="text-lime-400 font-bold">perfect</span> Minecraft experience! Whether you're a solo player or enjoy playing with others, you'll definitely find your place with us. <i class="fas fa-fire text-orange-400 animate-bounce-subtle"></i></p>
+                <div class="bg-gray-900/40 backdrop-blur-2xl rounded-3xl p-8 mb-8 max-w-2xl mx-auto border border-gray-700/30 shadow-2xl animate-float hover:shadow-lime-500/20 transition-all duration-500">
+                    <div class="flex items-center justify-center gap-4 flex-wrap">
+                        <code class="text-4xl md:text-5xl font-mono font-black text-white bg-gray-800/50 px-8 py-4 rounded-2xl border border-gray-600/50 select-all hover:bg-gray-700/50 transition-all duration-300 cursor-pointer" id="ip-code">meteor.sdlf.fun</code>
+                        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-10 px-4 py-2 text-gray-400 hover:text-lime-400 hover:bg-lime-500/10 transition-all duration-300" onclick="copyIP()">
+                            <svg class="lucide lucide-copy w-5 h-5" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><rect height="14" rx="2" ry="2" width="14" x="8" y="8"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="flex flex-row gap-4 justify-center items-center">
+                    <a href="/store">
+                        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary hover:bg-primary/90 h-10 bg-gradient-to-r from-amber-300 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-white font-black px-10 py-5 rounded-2xl text-xl shadow-2xl hover:shadow-amber-500/25 transition-all duration-300 transform hover:scale-105">
+                            <i class="fas fa-shopping-cart mr-3 text-xl"></i>Visit Store
+                        </button>
+                    </a>
+                    <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary hover:bg-primary/90 h-10 group relative overflow-hidden bg-gradient-to-r from-lime-500 to-green-500 hover:from-lime-600 hover:to-green-600 text-white font-black px-10 py-5 rounded-2xl text-xl shadow-2xl hover:shadow-lime-500/25 transition-all duration-300 transform hover:scale-105">
+                        <i class="fas fa-gamepad mr-3 text-xl"></i>Join Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-20 relative">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+                <div class="rounded-lg border text-card-foreground shadow-sm bg-gray-900/30 backdrop-blur-2xl border-gray-700/30 text-center hover:bg-gray-900/50 transition-all duration-500 group animate-fade-in-up hover:shadow-lime-500/20 hover:border-lime-500/30">
+                    <div class="p-8">
+                        <div class="bg-lime-500/20 w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 hover:shadow-lime-500/50">
+                            <i class="fas fa-users text-3xl text-lime-400"></i>
+                        </div>
+                        <div class="text-4xl lg:text-5xl font-black text-white mb-3"><span class="animate-pulse">Loading...</span></div>
+                        <p class="text-gray-400 font-semibold text-lg">Online Players</p>
+                    </div>
+                </div>
+                <div class="rounded-lg border text-card-foreground shadow-sm bg-gray-900/30 backdrop-blur-2xl border-gray-700/30 text-center hover:bg-gray-900/50 transition-all duration-500 group animate-fade-in-up delay-100 hover:shadow-green-500/20 hover:border-green-500/30">
+                    <div class="p-8">
+                        <div class="bg-green-500/20 w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 hover:shadow-green-500/50">
+                            <i class="fas fa-clock text-3xl text-green-400"></i>
+                        </div>
+                        <div class="text-4xl lg:text-5xl font-black text-white mb-3">99.8%</div>
+                        <p class="text-gray-400 font-semibold text-lg">Uptime</p>
+                    </div>
+                </div>
+                <div class="rounded-lg border text-card-foreground shadow-sm bg-gray-900/30 backdrop-blur-2xl border-gray-700/30 text-center hover:bg-gray-900/50 transition-all duration-500 group animate-fade-in-up delay-200 hover:shadow-blue-500/20 hover:border-blue-500/30">
+                    <div class="p-8">
+                        <div class="bg-blue-500/20 w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 hover:shadow-blue-500/50">
+                            <i class="fas fa-server text-3xl text-blue-400"></i>
+                        </div>
+                        <div class="text-4xl lg:text-5xl font-black text-white mb-3">1</div>
+                        <p class="text-gray-400 font-semibold text-lg">Unique Game Mode</p>
+                    </div>
+                </div>
+                <div class="rounded-lg border text-card-foreground shadow-sm bg-gray-900/30 backdrop-blur-2xl border-gray-700/30 text-center hover:bg-gray-900/50 transition-all duration-500 group animate-fade-in-up delay-300 hover:shadow-yellow-500/20 hover:border-yellow-500/30">
+                    <div class="p-8">
+                        <div class="bg-yellow-500/20 w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 hover:shadow-yellow-500/50">
+                            <i class="fas fa-trophy text-3xl text-yellow-400"></i>
+                        </div>
+                        <div class="text-4xl lg:text-5xl font-black text-white mb-3">90+</div>
+                        <p class="text-gray-400 font-semibold text-lg">Total Players</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 relative">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-20">
+                <h2 class="text-6xl lg:text-7xl font-black text-white mb-8 animate-slide-up">Unique Game Mode</h2>
+                <p class="text-2xl text-gray-400 max-w-4xl mx-auto animate-fade-in">Start your adventure! Choose your Galaxy with abilities that suit you best! <i class="fas fa-gamepad text-lime-400 animate-bounce-subtle"></i></p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="rounded-lg border text-card-foreground shadow-sm bg-gray-900/30 backdrop-blur-2xl border-gray-700/30 hover:bg-gray-900/50 transition-all duration-500 group overflow-hidden cursor-pointer animate-fade-in-up hover:scale-105 hover:shadow-2xl">
+                    <div class="relative h-48 overflow-hidden">
+                        <img alt="Galactic Survival" class="object-cover group-hover:scale-110 transition-transform duration-500" data-nimg="fill" decoding="async" loading="lazy" src="/images/Spawn.png" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent"/>
+                        <div class="absolute inset-0 bg-gradient-to-t from-lime-500/20 to-green-500/20"></div>
+                        <div class="absolute top-4 right-4">
+                            <div class="inline-flex items-center rounded-full text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 hover:bg-primary/80 border-lime-500/30 bg-lime-500/20 text-lime-400 border px-3 py-1 hover:scale-110 transition-transform duration-300">
+                                <i class="fas fa-users mr-2"></i><span class="animate-pulse">Loading...</span>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-4 left-4">
+                            <div class="border-lime-500/30 p-3 rounded-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                                <svg class="lucide lucide-house w-8 h-8" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col space-y-1.5 p-6 pb-4">
+                        <div class="tracking-tight text-white text-2xl font-black group-hover:text-lime-400 transition-colors duration-300">Galactic Survival</div>
+                        <div class="text-gray-300 text-lg">Looking for an epic survival server with an active community? Meteor offers an experience you won’t find anywhere else! 🌍</div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <div class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 hover:bg-primary/80 border-lime-500/30 bg-lime-500/20 text-lime-400 border hover:scale-110 transition-transform duration-300">Claiming</div>
+                            <div class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 hover:bg-primary/80 border-lime-500/30 bg-lime-500/20 text-lime-400 border hover:scale-110 transition-transform duration-300">Quests</div>
+                            <div class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 hover:bg-primary/80 border-lime-500/30 bg-lime-500/20 text-lime-400 border hover:scale-110 transition-transform duration-300">Custom Fishing</div>
+                        </div>
+                        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-primary/90 h-10 px-4 w-full border-lime-500/30 hover:border-lime-500/30/30 text-lime-400 border bg-lime-500/20 font-bold py-3 rounded-xl transition-all duration-300 hover:scale-105">
+                            <i class="fas fa-play mr-2"></i>Play Galactic Survival
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 bg-gray-900/20 backdrop-blur-sm">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-20">
+                <h2 class="text-6xl lg:text-7xl font-black text-white mb-8">Our Staff Team</h2>
+                <p class="text-2xl text-gray-400 max-w-4xl mx-auto">Our Staff Team ensures the server runs smoothly! <i class="fas fa-crown text-yellow-400 animate-bounce-subtle"></i></p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                <div class="rounded-lg border text-card-foreground shadow-sm bg-gray-900/30 backdrop-blur-2xl border-gray-700/30 text-center hover:bg-gray-900/50 transition-all duration-500 group animate-fade-in-up hover:scale-105">
+                    <div class="p-8">
+                        <span class="relative flex shrink-0 overflow-hidden rounded-full w-28 h-28 mx-auto mb-6 border-4 border-red-500 group-hover:scale-110 transition-transform duration-500 hover:rotate-6">
+                            <span class="flex h-full w-full items-center justify-center rounded-full bg-muted text-2xl font-bold">SO</span>
+                        </span>
+                        <h3 class="text-white font-black text-xl mb-3">AmitBhai</h3>
+                        <div class="inline-flex items-center rounded-full border text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 hover:bg-primary/80 mb-4 px-4 py-2 bg-red-500/10 hover:shadow-red-500/30 text-red-400 border-red-500/30 hover:scale-110 transition-transform duration-300">
+                            <svg class="lucide lucide-crown w-4 h-4 mr-2" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"></path><path d="M5 21h14"></path></svg>Owner
+                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed">Founder of the Meteor project.</p>
+                    </div>
+                </div>
+                <div class="rounded-lg border text-card-foreground shadow-sm bg-gray-900/30 backdrop-blur-2xl border-gray-700/30 text-center hover:bg-gray-900/50 transition-all duration-500 group animate-fade-in-up hover:scale-105" style="animation-delay:100ms">
+                    <div class="p-8">
+                        <span class="relative flex shrink-0 overflow-hidden rounded-full w-28 h-28 mx-auto mb-6 border-4 border-lime-500 group-hover:scale-110 transition-transform duration-500 hover:rotate-6">
+                            <span class="flex h-full w-full items-center justify-center rounded-full bg-muted text-2xl font-bold">HK</span>
+                        </span>
+                        <h3 class="text-white font-black text-xl mb-3">Matyst88</h3>
+                        <div class="inline-flex items-center rounded-full border text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 hover:bg-primary/80 mb-4 px-4 py-2 bg-lime-500/10 hover:shadow-lime-500/30 text-lime-400 border-lime-500/30 hover:scale-110 transition-transform duration-300">
+                            <svg class="lucide lucide-star w-4 h-4 mr-2" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>Helper +
+                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed">Always ready to help with questions.</p>
+                    </div>
+                </div>
+                <div class="rounded-lg border text-card-foreground shadow-sm bg-gray-900/30 backdrop-blur-2xl border-gray-700/30 text-center hover:bg-gray-900/50 transition-all duration-500 group animate-fade-in-up hover:scale-105" style="animation-delay:200ms">
+                    <div class="p-8">
+                        <span class="relative flex shrink-0 overflow-hidden rounded-full w-28 h-28 mx-auto mb-6 border-4 border-lime-500 group-hover:scale-110 transition-transform duration-500 hover:rotate-6">
+                            <span class="flex h-full w-full items-center justify-center rounded-full bg-muted text-2xl font-bold">HK</span>
+                        </span>
+                        <h3 class="text-white font-black text-xl mb-3">BanyoTerligi</h3>
+                        <div class="inline-flex items-center rounded-full border text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 hover:bg-primary/80 mb-4 px-4 py-2 bg-lime-500/10 hover:shadow-lime-500/30 text-lime-400 border-lime-500/30 hover:scale-110 transition-transform duration-300">
+                            <svg class="lucide lucide-star w-4 h-4 mr-2" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>Helper
+                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed">Always ready to help with issues.</p>
+                    </div>
+                </div>
+                <div class="rounded-lg border text-card-foreground shadow-sm bg-gray-900/30 backdrop-blur-2xl border-gray-700/30 text-center hover:bg-gray-900/50 transition-all duration-500 group animate-fade-in-up hover:scale-105" style="animation-delay:300ms">
+                    <div class="p-8">
+                        <span class="relative flex shrink-0 overflow-hidden rounded-full w-28 h-28 mx-auto mb-6 border-4 border-lime-500 group-hover:scale-110 transition-transform duration-500 hover:rotate-6">
+                            <span class="flex h-full w-full items-center justify-center rounded-full bg-muted text-2xl font-bold">HK</span>
+                        </span>
+                        <h3 class="text-white font-black text-xl mb-3">24kgoldragon</h3>
+                        <div class="inline-flex items-center rounded-full border text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 hover:bg-primary/80 mb-4 px-4 py-2 bg-lime-500/10 hover:shadow-lime-500/30 text-lime-400 border-lime-500/30 hover:scale-110 transition-transform duration-300">
+                            <svg class="lucide lucide-star w-4 h-4 mr-2" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>Helper
+                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed">Always ready to help new players.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="/staff">
+                    <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-10 bg-lime-500/20 hover:bg-lime-500/30 text-lime-400 border-2 border-lime-500/30 px-10 py-4 rounded-2xl font-black text-lg transition-all duration-300 hover:scale-105 hover:shadow-lime-500/30">View Full Staff Team<i class="fas fa-chevron-right ml-3"></i></button>
+                </a>
+            </div>
+        </div>
+    </section>
+    <section class="py-24">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-20">
+                <h2 class="text-6xl lg:text-7xl font-black text-white mb-8">Latest News</h2>
+                <p class="text-2xl text-gray-400 max-w-4xl mx-auto">Stay updated with all announcements and events! <i class="fas fa-newspaper text-blue-400 animate-bounce-subtle"></i></p>
+            </div>
+            <div class="space-y-8">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="rounded-lg border text-card-foreground shadow-sm bg-gray-900/30 backdrop-blur-2xl border-gray-700/30 hover:bg-gray-900/50 transition-all duration-500 group overflow-hidden cursor-pointer hover:scale-105 hover:shadow-2xl ring-2 ring-lime-500/30 hover:ring-lime-500/50">
+                        <div class="bg-gradient-to-r from-lime-500/20 to-green-500/20 p-2">
+                            <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 hover:bg-primary/80 bg-lime-500/20 text-lime-400 border-lime-500/30 text-xs hover:scale-110 transition-transform duration-300"><i class="fas fa-star mr-1"></i>Featured</div>
+                        </div>
+                        <div class="flex flex-col space-y-1.5 p-6 pb-4">
+                            <div class="flex items-start justify-between gap-3 mb-3">
+                                <div class="p-3 rounded-2xl bg-blue-500/20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                                    <svg class="lucide lucide-zap w-6 h-6" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-gray-400"><i class="fas fa-calendar-alt"></i>June 28, 2025</div>
+                            </div>
+                            <div class="tracking-tight text-white text-xl font-bold leading-tight group-hover:text-lime-400 transition-colors duration-300">🌱 New Website • More Beautiful and User-Friendly!</div>
+                            <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 hover:bg-primary/80 w-fit bg-blue-500/20 text-blue-400 border-blue-500/30 hover:scale-110 transition-transform duration-300">Update</div>
+                        </div>
+                        <div class="p-6 pt-0">
+                            <div class="text-gray-300 text-base leading-relaxed mb-4">Discover the completely new look of our website! Revamped design, improved speed, new features, and a better browsing experience. Explore it all today!</div>
+                            <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border hover:text-accent-foreground h-9 rounded-md px-3 border-gray-600 text-gray-300 hover:bg-gray-700/50 bg-transparent hover:scale-105 transition-all duration-300"><i class="fas fa-book-open mr-2"></i>Read More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-center gap-4">
+                    <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border hover:text-accent-foreground h-9 rounded-md px-3 border-gray-600 text-gray-300 hover:bg-gray-700/50 bg-transparent disabled:opacity-50 hover:scale-110 transition-all duration-300" disabled=""><i class="fas fa-chevron-left mr-2"></i>Newer</button>
+                    <div class="flex items-center gap-2"><button class="w-3 h-3 rounded-full transition-all duration-300 hover:scale-125 bg-lime-400 shadow-lime-400/50 shadow-lg"></button></div>
+                    <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border hover:text-accent-foreground h-9 rounded-md px-3 border-gray-600 text-gray-300 hover:bg-gray-700/50 bg-transparent disabled:opacity-50 hover:scale-110 transition-all duration-300" disabled="">Older<i class="fas fa-chevron-right ml-2"></i></button>
+                </div>
+                <div class="text-center text-gray-400 text-sm">Page 1 of 1 • Displaying 1 of 1 articles</div>
+            </div>
+        </div>
+    </section>
+    <section class="py-16 bg-gray-900/20 backdrop-blur-sm">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl lg:text-6xl font-black text-red-300 mb-6 animate-neon-pulse-red-subtle">Meteor Community Rules</h2>
+                <p class="text-xl text-gray-400 max-w-4xl mx-auto mb-4">By joining our server, you agree to follow these rules! <i class="fas fa-clipboard-list text-lime-400 animate-bounce-subtle"></i></p>
+                <p class="text-lg text-gray-500">These are the most important rules. For complete rules, visit our <a class="text-lime-400 hover:text-lime-300 font-semibold hover:underline transition-all duration-300" href="https://dsc.gg/meteor" rel="noopener noreferrer" target="_blank"><i class="fab fa-discord mr-1"></i>Discord server</a></p>
+            </div>
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="rounded-lg border text-card-foreground shadow-sm bg-gray-900/30 backdrop-blur-2xl border-gray-700/30 hover:bg-gray-900/50 transition-all duration-500 animate-fade-in-up group hover:shadow-lime-500/30 hover:border-lime-500/50 neon-border-hover">
+                        <div class="flex flex-col space-y-1.5 p-6">
+                            <div class="tracking-tight text-white flex items-center gap-4 text-2xl font-black">
+                                <div class="bg-lime-500/20 p-3 rounded-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 hover:shadow-lime-500/50"><i class="fas fa-shield-alt text-2xl text-lime-400"></i></div>General Rules
+                            </div>
+                        </div>
+                        <div class="p-6 pt-0 space-y-4">
+                            <div class="flex items-start gap-3 group hover:translate-x-2 transition-transform duration-300">
+                                <i class="fas fa-check-circle text-lg text-lime-400 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300"></i>
+                                <p class="text-gray-300 text-lg">Be respectful. Bullying, insults, or harassment have no place here.</p>
+                            </div>
+                            <div class="flex items-start gap-3 group hover:translate-x-2 transition-transform duration-300">
+                                <i class="fas fa-check-circle text-lg text-lime-400 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300"></i>
+                                <p class="text-gray-300 text-lg">Do not advertise other servers, social media, or suspicious links.</p>
+                            </div>
+                            <div class="flex items-start gap-3 group hover:translate-x-2 transition-transform duration-300">
+                                <i class="fas fa-check-circle text-lg text-lime-400 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300"></i>
+                                <p class="text-gray-300 text-lg">Staff has the final say. For disputes, open a ticket—no arguments.</p>
+                            </div>
+                            <div class="flex items-start gap-3 group hover:translate-x-2 transition-transform duration-300">
+                                <i class="fas fa-check-circle text-lg text-lime-400 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300"></i>
+                                <p class="text-gray-300 text-lg">Do not exploit any gameplay advantages unfairly.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rounded-lg border text-card-foreground shadow-sm bg-gray-900/30 backdrop-blur-2xl border-gray-700/30 hover:bg-gray-900/50 transition-all duration-500 animate-fade-in-up delay-200 group hover:shadow-red-500/30 hover:border-red-500/50 neon-border-hover-red">
+                        <div class="flex flex-col space-y-1.5 p-6">
+                            <div class="tracking-tight text-white flex items-center gap-4 text-2xl font-black">
+                                <div class="bg-red-500/20 p-3 rounded-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 hover:shadow-red-500/50"><i class="fas fa-bolt text-2xl text-red-400"></i></div>Minecraft Rules
+                            </div>
+                        </div>
+                        <div class="p-6 pt-0 space-y-4">
+                            <div class="flex items-start gap-3 group hover:translate-x-2 transition-transform duration-300">
+                                <i class="fas fa-check-circle text-lg text-lime-400 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300"></i>
+                                <p class="text-gray-300 text-lg">Hacked clients, x-ray, autoclickers, and similar tools are prohibited.</p>
+                            </div>
+                            <div class="flex items-start gap-3 group hover:translate-x-2 transition-transform duration-300">
+                                <i class="fas fa-check-circle text-lg text-lime-400 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300"></i>
+                                <p class="text-gray-300 text-lg">Do not use redstone or farms that cause lag. No bugs, exploits, or duplication.</p>
+                            </div>
+                            <div class="flex items-start gap-3 group hover:translate-x-2 transition-transform duration-300">
+                                <i class="fas fa-check-circle text-lg text-lime-400 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300"></i>
+                                <p class="text-gray-300 text-lg">Do not grief the world, troll, or burden the server with destructive behavior.</p>
+                            </div>
+                            <div class="flex items-start gap-3 group hover:translate-x-2 transition-transform duration-300">
+                                <i class="fas fa-check-circle text-lg text-lime-400 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform duration-300"></i>
+                                <p class="text-gray-300 text-lg">PvP is prohibited outside of special arenas or events unless mutually agreed upon.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="bg-gray-950/90 backdrop-blur-2xl border-t border-gray-700/30 py-6">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3 mb-4 group">
+                        <img alt="Logo" class="rounded-2xl group-hover:scale-110 transition-transform duration-300" data-nimg="1" decoding="async" height="40" loading="lazy" src="/images/logo.png" style="color:transparent" width="40"/>
+                        <h3 class="text-white font-black text-xl group-hover:text-lime-400 transition-colors duration-300">Meteor</h3>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed text-sm">With us, you'll find dozens of systems that combine the best of classic Minecraft with features, all in a unique form. 🎯</p>
+                    <div class="flex items-center gap-2">
+                        <div class="w-2 h-2 bg-lime-400 rounded-full animate-pulse"></div>
+                        <span class="text-lime-400 font-bold text-sm">Server is online</span>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-gradient-to-r from-lime-500/20 to-green-500/20 rounded-lg px-3 py-2 border border-lime-500/30">
+                        <h4 class="text-lime-400 font-bold text-base">Quick Links</h4>
+                    </div>
+                    <div class="shrink-0 h-[1px] w-full bg-lime-500/30" data-orientation="horizontal" role="none"></div>
+                    <div class="space-y-2">
+                        <a class="block text-gray-400 hover:text-lime-400 transition-colors font-medium hover:translate-x-2 duration-300 text-sm" href="/vote"><i class="fas fa-vote-yea mr-2"></i>Vote</a>
+                        <a class="block text-gray-400 hover:text-lime-400 transition-colors font-medium hover:translate-x-2 duration-300 text-sm" href="/staff"><i class="fas fa-users mr-2"></i>Staff Team</a>
+                        <a class="block text-gray-400 hover:text-lime-400 transition-colors font-medium hover:translate-x-2 duration-300 text-sm" href="/store"><i class="fas fa-shopping-cart mr-2"></i>Store</a>
+                        <a class="block text-gray-400 hover:text-lime-400 transition-colors font-medium hover:translate-x-2 duration-300 text-sm" href="https://purelandia.gitbook.io/purelandia" rel="noopener noreferrer" target="_blank"><i class="fas fa-book mr-2"></i>Wiki</a>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg px-3 py-2 border border-blue-500/30">
+                        <h4 class="text-blue-400 font-bold text-base">Community</h4>
+                    </div>
+                    <div class="shrink-0 h-[1px] w-full bg-blue-500/30" data-orientation="horizontal" role="none"></div>
+                    <div class="space-y-2">
+                        <a class="block text-gray-400 hover:text-blue-400 transition-colors font-medium hover:translate-x-2 duration-300 text-sm" href="https://dsc.gg/meteor" rel="noopener noreferrer" target="_blank"><i class="fab fa-discord mr-2"></i>Discord Server</a>
+                        <a class="block text-gray-400 hover:text-blue-400 transition-colors font-medium hover:translate-x-2 duration-300 text-sm" href="https://dsc.gg/meteor" rel="noopener noreferrer" target="_blank"><i class="fas fa-life-ring mr-2"></i>Support</a>
+                        <a class="block text-gray-400 hover:text-blue-400 transition-colors font-medium hover:translate-x-2 duration-300 text-sm" href="/vote"><i class="fas fa-thumbs-up mr-2"></i>Vote for Us</a>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-lg px-3 py-2 border border-yellow-500/30">
+                        <h4 class="text-yellow-400 font-bold text-base">Server Information</h4>
+                    </div>
+                    <div class="shrink-0 h-[1px] w-full bg-yellow-500/30" data-orientation="horizontal" role="none"></div>
+                    <div class="bg-gray-900/50 rounded-xl p-3 border border-gray-700/30 hover:border-lime-500/30 transition-all duration-300 hover:shadow-lime-500/20">
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-400 text-xs"><i class="fas fa-server mr-1"></i>IP:</span>
+                                <div class="flex items-center gap-1">
+                                    <code class="text-lime-400 font-mono font-bold select-all hover:text-lime-300 transition-colors duration-300 text-xs">meteor.sdlf.fun</code>
+                                    <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-9 rounded-md px-3 text-gray-400 hover:text-lime-400 hover:bg-lime-500/10 transition-all duration-300">
+                                        <svg class="lucide lucide-copy w-5 h-5" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><rect height="14" rx="2" ry="2" width="14" x="8" y="8"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-400 text-xs"><i class="fas fa-code-branch mr-1"></i>Version:</span>
+                                <span class="text-white font-bold text-xs">1.21.4+</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-400 text-xs"><i class="fas fa-globe-europe mr-1"></i>Location:</span>
+                                <span class="text-white font-bold text-xs">Europe</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-400 text-xs"><i class="fas fa-users mr-1"></i>Players:</span>
+                                <span class="text-white font-bold text-xs"><span class="animate-pulse">Loading...</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="shrink-0 h-[1px] w-full my-4 bg-gray-700/30" data-orientation="horizontal" role="none"></div>
+            <div class="flex flex-col md:flex-row justify-between items-center gap-2">
+                <p class="text-gray-400 text-sm">🌠 © 2025 Meteor • All rights reserved.</p>
+                <p class="text-gray-400 text-xs">We are not affiliated with Mojang Studios or Microsoft.</p>
+            </div>
+        </div>
+    </footer>
+</div>
+
+</body>
+</html>
