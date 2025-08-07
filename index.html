@@ -168,7 +168,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           <div class="tile">
             <a href="minecraftserver.html" aria-label="Join Meteor Minecraft Server">
-              <img src="a1bf9bb7-6ba5-40de-bc95-16f639d9ebf3.jpg" alt="Meteor Minecraft Server" class="w-full h-64 bg-gray-900">
+              <img src="/images/a1bf9bb7-6ba5-40de-bc95-16f639d9ebf3.jpg" alt="Meteor Minecraft Server" class="w-full h-64 bg-gray-900">
               <div class="tile-overlay">
                 <h3 class="text-lg font-semibold text-white">Meteor Minecraft Server</h3>
                 <p class="text-sm text-gray-300">Join our cracked + premium Minecraft server!</p>
@@ -186,7 +186,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           <div class="tile">
             <a href="/docs.html" aria-label="Tutorials and Documentation">
-              <img src="https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Ft3.ftcdn.net%2Fjpg%2F03%2F45%2F34%2F46%2F360_F_345344681_CzN5Rzxqaon2YHQ0SD1xZguIyqScdUzf.jpg&sp=1754498678Te877c993c6f0e2e15b4c63a7da009c6641a1c0b10afb055310f7eb081d63ed44" alt="Tutorials and Documentation" class="w-full h-64 bg-gray-900">
+              <img src="/images/tutorial.jpg" alt="Tutorials and Documentation" class="w-full h-64 bg-gray-900">
               <div class="tile-overlay">
                 <h3 class="text-lg font-semibold text-white">Tutorials & Documentation</h3>
                 <p class="text-sm text-gray-300">Learn how to use Meteor’s features.</p>
@@ -198,19 +198,7 @@
     </section>
   </main>
 
-  <!-- Popup for File Conversion -->
-  <div id="popup" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-20">
-    <div class="popup p-6 max-w-md w-full">
-      <h2 id="popup-title" class="text-2xl font-bold text-white mb-4"></h2>
-      <input type="file" id="file-input" class="mb-4 w-full text-gray-300">
-      <div id="preview" class="mb-4 hidden">
-        <img id="preview-image" class="w-full h-40 object-cover rounded" alt="File Preview">
-      </div>
-      <div class="loading-bar w-full mb-4 hidden"></div>
-      <button class="netflix-btn w-full" onclick="convertFile()">Convert</button>
-      <button class="netflix-btn mt-2 w-full" onclick="closePopup()">Close</button>
-    </div>
-  </div>
+ 
 
   <footer class="bg-black py-6">
     <div class="container mx-auto px-4 text-center text-gray-300">
@@ -220,97 +208,6 @@
   </footer>
 
   <script>
-    // Conversion Logic
-    const conversionHistory = [];
-
-    function openPopup(type) {
-      document.getElementById('popup').classList.remove('hidden');
-      document.getElementById('popup-title').textContent = `${type.charAt(0).toUpperCase() + type.slice(1)} Conversion`;
-      document.getElementById('file-input').accept = getAcceptType(type);
-      document.getElementById('file-input').dataset.type = type;
-      document.getElementById('preview').classList.add('hidden');
-    }
-
-    function closePopup() {
-      document.getElementById('popup').classList.add('hidden');
-      document.getElementById('file-input').value = '';
-      document.getElementById('preview').classList.add('hidden');
-    }
-
-    function getAcceptType(type) {
-      switch (type) {
-        case 'image': return 'image/*';
-        case 'pdf': return '.pdf';
-        case 'word': return '.doc,.docx';
-        case 'excel': return '.xls,.xlsx';
-        default: return '*';
-      }
-    }
-
-    function convertFile() {
-      const fileInput = document.getElementById('file-input');
-      const type = fileInput.dataset.type;
-      const file = fileInput.files[0];
-      if (!file) {
-        alert('Please select a file');
-        return;
-      }
-
-      const loadingBar = document.querySelector('.loading-bar');
-      loadingBar.classList.remove('hidden');
-      setTimeout(() => {
-        loadingBar.style.width = '100%';
-        setTimeout(() => {
-          const outputUrl = URL.createObjectURL(file); // Placeholder for actual conversion
-          addToHistory(file.name, outputUrl, type);
-          loadingBar.classList.add('hidden');
-          loadingBar.style.width = '0';
-          closePopup();
-          triggerSoundEffect();
-          if (confirm('Download converted file?')) {
-            const a = document.createElement('a');
-            a.href = outputUrl;
-            a.download = `converted_${file.name}`;
-            a.click();
-          }
-        }, 2000);
-      }, 100);
-
-      // Image Preview
-      if (type === 'image') {
-        const preview = document.getElementById('preview');
-        const previewImage = document.getElementById('preview-image');
-        previewImage.src = URL.createObjectURL(file);
-        preview.classList.remove('hidden');
-      }
-    }
-
-    function addToHistory(filename, url, type) {
-      conversionHistory.unshift({ filename, url, type, date: new Date().toLocaleString() });
-      if (conversionHistory.length > 2) conversionHistory.pop();
-    }
-
-    function triggerSoundEffect() {
-      const audio = new Audio('zvuk-litvina.mp3');
-      audio.play().catch(error => console.log('Sound playback failed:', error));
-    }
-
-    // Drag and Drop
-    document.addEventListener('dragover', e => e.preventDefault());
-    document.addEventListener('drop', e => {
-      e.preventDefault();
-      const file = e.dataTransfer.files[0];
-      if (file) {
-        const type = document.getElementById('file-input').dataset.type || 'image';
-        document.getElementById('file-input').files = e.dataTransfer.files;
-        if (type === 'image') {
-          const preview = document.getElementById('preview');
-          const previewImage = document.getElementById('preview-image');
-          previewImage.src = URL.createObjectURL(file);
-          preview.classList.remove('hidden');
-        }
-      }
-    });
 
     // Background music control
     document.getElementById('background-music').volume = 0.5; // Set to 50% volume
