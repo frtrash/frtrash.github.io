@@ -511,3 +511,10 @@
         updateServerStatus();
         setInterval(updateServerStatus, 10000);
     </script>
+	<script>
+document.addEventListener("DOMContentLoaded", () => {
+  if (location.pathname.endsWith(".html")) {
+    history.replaceState({}, "", location.pathname.replace(".html", ""));
+  }
+});
+</script>
