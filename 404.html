@@ -130,5 +130,13 @@
     tlSpin.set('.spin-circles', { rotation: 0, transformOrigin: "50% 50%", opacity: 1 })
       .to('.spin-circles', 3.5, { rotation: 360, ease: Linear.easeNone });
   </script>
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  if (location.pathname.endsWith(".html")) {
+    history.replaceState({}, "", location.pathname.replace(".html", ""));
+  }
+});
+</script>
+
 </body>
 </html>

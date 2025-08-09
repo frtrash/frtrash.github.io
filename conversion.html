@@ -1019,5 +1019,13 @@
     history.updateHistoryDisplay();
     ['image', 'pdf', 'word', 'excel'].forEach(type => events.setupDragAndDrop(type));
   </script>
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  if (location.pathname.endsWith(".html")) {
+    history.replaceState({}, "", location.pathname.replace(".html", ""));
+  }
+});
+</script>
+
 </body>
 </html>
