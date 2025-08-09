@@ -538,6 +538,14 @@
   <footer>
     <p>&copy; 2025 Meteor File Forge. All rights reserved.</p>
   </footer>
+  
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  if (location.pathname.endsWith(".html")) {
+    history.replaceState({}, "", location.pathname.replace(".html", ""));
+  }
+});
+</script>
 
   <script>
     // Meteor Animation Module
@@ -1019,13 +1027,6 @@
     history.updateHistoryDisplay();
     ['image', 'pdf', 'word', 'excel'].forEach(type => events.setupDragAndDrop(type));
   </script>
-  <script>
-document.addEventListener("DOMContentLoaded", () => {
-  if (location.pathname.endsWith(".html")) {
-    history.replaceState({}, "", location.pathname.replace(".html", ""));
-  }
-});
-</script>
 
 </body>
 </html>

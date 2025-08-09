@@ -168,7 +168,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           <div class="tile">
             <a href="minecraftserver.html" aria-label="Join Meteor Minecraft Server">
-              <img src="/images/a1bf9bb7-6ba5-40de-bc95-16f639d9ebf3.jpg" alt="Meteor Minecraft Server" class="w-full h-64 bg-gray-900">
+              <img src="https://raw.githubusercontent.com/meteoryx/meteoryx.github.io/refs/heads/master/images/logo.png" class="w-40 h-40 mx-auto bg-gray-900 p-4">
               <div class="tile-overlay">
                 <h3 class="text-lg font-semibold text-white">Meteor Minecraft Server</h3>
                 <p class="text-sm text-gray-300">Join our cracked + premium Minecraft server!</p>
@@ -206,11 +206,12 @@
       <p><a href="https://github.com/meteoryx/meteoryx.github.io" target="_blank" class="text-red-900 hover:text-purple-900 transition">GitHub</a></p>
     </div>
   </footer>
-
   <script>
-
-    // Background music control
-    document.getElementById('background-music').volume = 0.5; // Set to 50% volume
-  </script>
+document.addEventListener("DOMContentLoaded", () => {
+  if (location.pathname.endsWith(".html")) {
+    history.replaceState({}, "", location.pathname.replace(".html", ""));
+  }
+});
+</script>
 </body>
 </html>
