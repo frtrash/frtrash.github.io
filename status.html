@@ -1,0 +1,165 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Minecraft Server Status - Meteor</title>
+    <meta name="description" content="Check the real-time status of the Meteor Minecraft server, including player count and online/offline status."/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <script src="https://cdn.tailwindcss.com/3.3.3"></script>
+    <style>
+        @keyframes pulse {
+            0%, 100% { transform: scale(0.8); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+        .pulse-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+        .pulse-dot.online { background: #00FF00; box-shadow: 0 0 10px #00FF00; }
+        .pulse-dot.offline { background: #FF0000; box-shadow: 0 0 10px #FF0000; }
+        body {
+            background: linear-gradient(to bottom, #0a0a1a, #001b33);
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <header class="bg-gray-900 bg-opacity-80 backdrop-blur-sm py-4">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-3xl font-bold text-white">Real Time Meteor Minecraft Server Status</h1>
+            <p class="text-gray-400 mt-2">Quickly retrieve the status of the Meteor Minecraft server</p>
+        </div>
+    </header>
+    <main class="flex-grow">
+        <div class="container mx-auto px-6 py-10 text-center">
+            <div class="mb-6">
+                <span class="pulse-dot" id="status-indicator"></span>
+                <span id="server-status" class="text-xl font-semibold">Loading...</span>
+            </div>
+            <div class="space-y-2 text-lg">
+                <p>Server IP: <span id="server-ip" class="font-mono text-lime-400">meteor.sdlf.fun</span></p>
+                <p>Players: <span id="player-count" class="text-lime-400">Loading...</span></p>
+                <p>Location: <span class="text-lime-400">North America</span></p>
+                <p>Version: <span class="text-lime-400">1.8-1.21.8+</span></p>
+            </div>
+            <p class="text-gray-500 mt-4 text-sm"> <span id="last-updated">Loading...</span></p>
+        </div>
+    </main>
+    <footer class="bg-gray-900 py-6 mt-auto">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center gap-6 mb-4">
+                <a href="https://discord.gg/meteor" aria-label="Discord" class="text-gray-400 hover:text-lime-400 transition-colors"><i class="fab fa-discord fa-2x"></i></a>
+                <a href="https://twitter.com/meteor_mc" aria-label="Twitter" class="text-gray-400 hover:text-lime-400 transition-colors"><i class="fab fa-twitter fa-2x"></i></a>
+                <a href="https://www.youtube.com/@meteor_mc" aria-label="YouTube" class="text-gray-400 hover:text-lime-400 transition-colors"><i class="fab fa-youtube fa-2x"></i></a>
+            </div>
+            <p class="text-gray-400 text-sm">© 2025 Meteor Team. All rights reserved.</p>
+            <div class="mt-2">
+                <span class="pulse-dot" id="footer-indicator"></span>
+                <span id="footer-status" class="text-gray-400 text-sm"></span>
+            </div>
+			<p id="footer-players"
+           
+           
+        </div>
+    </footer>
+    <script>
+        async function updateServerStatus() {
+            const serverIp = 'meteor.sdlf.fun';
+            const apiUrl = `https://api.mcstatus.io/v2/status/java/${serverIp}`;
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                const isOnline = data.online;
+                const playerCount = data.players ? `${data.players.online}/${data.players.max}` : '0/0';
+                const statusText = isOnline ? `Online • ${playerCount} players` : 'Offline';
+                const lastUpdated = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
+
+                // Update main section
+                document.getElementById('status-indicator').className = `pulse-dot ${isOnline ? 'online' : 'offline'}`;
+                document.getElementById('server-status').textContent = statusText;
+                document.getElementById('player-count').textContent = `Players: ${playerCount}`;
+                document.getElementById('last-updated').textContent = `Last updated: ${lastUpdated}`;
+
+                // Update footer section
+                document.getElementById('footer-indicator').className = `pulse-dot ${isOnline ? 'online' : 'offline'}`;
+                document.getElementById('footer-status').textContent = `Status: ${statusText}`;
+                document.getElementById('footer-players').textContent = `Players: ${playerCount}`;
+            } catch (error) {
+                console.error('Error fetching server status:', error);
+                const lastUpdated = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
+
+                // Update with error state
+                document.getElementById('status-indicator').className = 'pulse-dot offline';
+                document.getElementById('server-status').textContent = 'Offline';
+                document.getElementById('player-count').textContent = 'Players: 0/0';
+                document.getElementById('last-updated').textContent = `Last updated: ${lastUpdated}`;
+
+                document.getElementById('footer-indicator').className = 'pulse-dot offline';
+                document.getElementById('footer-status').textContent = 'Status: Offline';
+                document.getElementById('footer-players').textContent = 'Players: 0/0';
+            }
+        }
+
+        // Initial update and set interval to match mcstatus.io 1 second cache
+        updateServerStatus();
+        setInterval(updateServerStatus, 1000);
+    </script>
+		<script>
+document.addEventListener("DOMContentLoaded", () => {
+  if (location.pathname.endsWith(".html")) {
+    history.replaceState({}, "", location.pathname.replace(".html", ""));
+  }
+});
+</script>
