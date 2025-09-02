@@ -1,217 +1,198 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Meteor - A platform for EPIC file conversions, Minecraft adventures, and community engagement.">
-  <meta name="keywords" content="Meteor, file conversion, Minecraft server, community, tutorials, bloody theme">
-  <meta name="author" content="Meteor">
-  <meta name="robots" content="index, follow">
-  <title>Meteor - Utensils</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%238b0000' stroke-width='8'/%3E%3Ccircle cx='50' cy='50' r='20' fill='%2300ccff'/%3E%3Cpath d='M50 10 L60 30 L80 35 L65 50 L70 70 L50 60 L30 70 L35 50 L20 35 L40 30 Z' fill='%238b0000'/%3E%3C/svg%3E">
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: #0a0a1a;
-      color: #ffffff;
-      font-family: 'Arial', sans-serif;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-    }
-    .netflix-btn {
-      background-color: #8b0000;
-      color: #ffffff;
-      border: none;
-      padding: 0.75rem 1.5rem;
-      border-radius: 0.25rem;
-      transition: background-color 0.3s, transform 0.3s;
-    }
-    .netflix-btn:hover {
-      background-color: #4b0082;
-      transform: scale(1.05);
-    }
-    .tile {
-      transition: all 0.4s ease;
-      position: relative;
-      overflow: hidden;
-      border-radius: 0.5rem;
-    }
-    .tile:hover {
-      transform: scale(1.15);
-      z-index: 10;
-      box-shadow: 0 0 20px rgba(139, 0, 0, 0.5);
-    }
-    .tile img {
-      border: 2px solid #4b0082;
-      border-radius: 0.5rem;
-      object-fit: cover;
-      width: 100%;
-      height: 100%;
-      background-color: #1a1a2e; /* Dark background for all images */
-    }
-    .tile-overlay {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 1rem;
-      transition: background-color 0.3s;
-    }
-    .tile:hover .tile-overlay {
-      background-color: rgba(0, 0, 0, 0.8);
-    }
-    .section-title {
-      text-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
-    }
-    nav {
-      background-color: rgba(0, 0, 0, 0.9);
-    }
-    .popup {
-      background-color: #1a1a2e;
-      border: 2px solid #8b0000;
-      border-radius: 0.5rem;
-    }
-    .loading-bar {
-      background-color: #4b0082;
-      height: 4px;
-      border-radius: 2px;
-    }
-    .minecraft-logo {
-      font-family: 'Courier New', Courier, monospace;
-      font-size: 2rem;
-      color: #3cff00;
-      text-shadow: 2px 2px #000;
-      text-align: center;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-  </style>
-</head>
-<body>
-  <!-- Background Music -->
-  <audio id="background-music" src="song101.mp3" autoplay loop></audio>
-  <!-- Header -->
-  <header class="fixed top-0 w-full bg-black bg-opacity-90 z-10">
-    <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <a href="/" class="text-3xl font-bold text-red-900" aria-label="Meteor Home">METEOR</a>
-      <ul class="flex space-x-6">
-        <li><a href="#hero" class="text-white hover:text-red-900 transition">Hero</a></li>
-        <li><a href="#utensils" class="text-white hover:text-red-900 transition">Utensils</a></li>
-        <li><a href="#community" class="text-white hover:text-red-900 transition">Community</a></li>
-        <li><a href="#minecraft" class="text-white hover:text-red-900 transition">Minecraft</a></li>
-        <li><a href="#tutorials" class="text-white hover:text-red-900 transition">Tutorials</a></li>
-      </ul>
-    </nav>
-  </header>
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8" /> <meta name="viewport" content="width=device-width, initial-scale=1" /> <title>FRTRASH — Tools, Servers & Community</title> <meta name="description" content="FRTRASH: snappy utilities, dynamic 3D landing, and a thriving Minecraft community." /> <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"> <!-- Tailwind CSS --> <script src="https://cdn.tailwindcss.com"></script> <script> tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] }, colors: { primary: { DEFAULT: '#22d3ee', 50: '#e6fcff', 100: '#cff9ff', 200: '#a6f0fb', 300: '#67e8f9', 400: '#22d3ee', 500: '#0ea5b5', 600: '#0b8794', 700: '#0e6b76', 800: '#0f525c', 900: '#0b3940' }, }, boxShadow: { glow: '0 0 30px rgba(34, 211, 238, 0.35)', }, backdropBlur: { xs: '2px', } } } } </script> <!-- GSAP + ScrollTrigger --> <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script> <style> /* Extra polish beyond Tailwind */ :root { color-scheme: dark; } html { scroll-behavior: smooth; } .glass { background: radial-gradient(60% 100% at 0% 0%, rgba(34,211,238,0.12), rgba(34,211,238,0) 60%), linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.12); } .gradient-text{ background: linear-gradient(92deg,#67e8f9 0%,#a78bfa 50%,#f0abfc 100%); -webkit-background-clip:text; background-clip:text; color: transparent; } .blob{ filter: blur(70px); opacity: .45; pointer-events:none; position:absolute; z-index:0; } .nav-link{ position:relative; } .nav-link:after{ content:''; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:#67e8f9; transition:width .3s ease; } .nav-link:hover:after{ width:100%; } /* Scoped CodePen "bottle" animation (sourced & adapted from Lina Yahouni's pen) */ .bottle-3d{ display:flex; align-items:center; justify-content:center; width:100%; height:100%; } .bottle-3d .bowl{ position: relative; width: 260px; height: 260px; background: rgba(255, 255, 255, 0.03); border-radius: 50%; border: 8px solid transparent; transform-origin: bottom center; animation: bottle-tilt 5s linear infinite; animation-play-state: running; box-shadow: 0 10px 40px rgba(0,0,0,0.6) inset; } @keyframes bottle-tilt{ 0%{ transform: rotate(0deg); } 25%{ transform: rotate(22deg); } 50%{ transform: rotate(0deg); } 75%{ transform: rotate(-22deg); } 100%{ filter: hue-rotate(360deg); } } .bottle-3d .bowl::before{ content: ''; position: absolute; top: -18px; left: 50%; transform: translateX(-50%); width: 40%; height: 30px; border-radius: 50%; box-shadow: 0 10px #222; } .bottle-3d .bowl::after{ content: ''; position: absolute; top: 35px; left: 50%; transform: translate(-50%, -50%); width: 150px; height: 60px; background: rgba(255,255,255,0.03); transform-origin: center; animation: bowl-shadow 5s linear infinite; border-radius: 50%; animation-play-state: running; } @keyframes bowl-shadow{ 0%{ left:50%; width:150px; height:60px; } 25%{ left:55%; width:140px; height:65px; } 50%{ left:50%; width:150px; height:60px; } 75%{ left:45%; width:140px; height:65px; } 100%{ left:50%; width:150px; height:60px; } } .bottle-3d .liquid{ position: absolute; top: 50%; left: 5px; right: 5px; bottom: 5px; background: linear-gradient(180deg, rgba(103,232,249,0.95), rgba(167,139,250,0.9)); border-bottom-left-radius: 150px; border-bottom-right-radius: 150px; filter: drop-shadow(0 0 80px rgba(103,232,249,0.35)); transform-origin: top center; animation: liquid-sway 5s linear infinite; animation-play-state: running; } @keyframes liquid-sway{ 0%{ transform: rotate(0deg); } 25%{ transform: rotate(-22deg); } 30%{ transform: rotate(-23deg); } 50%{ transform: rotate(0deg); } 75%{ transform: rotate(22deg); } 100%{ transform: rotate(0deg); } } .bottle-3d .liquid::before{ content: ''; position: absolute; top: -10px; width: 100%; height: 20px; background: rgba(103,232,249,1); border-radius: 50%; filter: drop-shadow(0 0 80px rgba(103,232,249,0.5)); } .bottle-3d .shadow{ position: absolute; top: calc(50% + 170px); width: 250px; height: 40px; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.5); border-radius: 50%; animation: shadow-anim 5s linear infinite; animation-play-state: running; } @keyframes shadow-anim{ 0%{ left:50%; width:260px; height:40px; top: calc(50% + 150px); } 25%{ left:55%; width:265px; height:30px; top: calc(50% + 130px); } 50%{ left:50%; width:260px; height:40px; top: calc(50% + 150px); } 75%{ left:45%; width:265px; height:30px; top: calc(50% + 130px); } 100%{ left:50%; width:260px; height:40px; top: calc(50% + 150px); } } /* Canvas placeholder compatibility class (keeps original layout sizing) */ .hero-art { width:100%; height:100%; } </style> </head> <body class="bg-[#0b0f14] text-white font-sans antialiased selection:bg-primary-400/30"> <!-- Background blobs --> <div class="blob w-[520px] h-[520px] bg-primary-400/40 top-[-120px] left-[-120px] rounded-full"></div> <div class="blob w-[420px] h-[420px] bg-fuchsia-400/40 bottom-[-120px] right-[-120px] rounded-full"></div> <!-- Header --> <header class="sticky top-0 z-40 bg-[#0b0f14]/70 backdrop-blur-md border-b border-white/10"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> <div class="flex items-center justify-between h-16"> <a href="#top" class="flex items-center gap-2 group"> <!-- Trash Icon Logo (inline SVG) --> <div class="relative p-2 rounded-2xl bg-white/5 border border-white/10 shadow-glow group-hover:shadow-lg transition"> <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"> <path d="M3 6h18" stroke="#67e8f9" stroke-width="1.5" stroke-linecap="round"/> <path d="M8 6V4.8A2.8 2.8 0 0 1 10.8 2h2.4A2.8 2.8 0 0 1 16 4.8V6" stroke="#67e8f9" stroke-width="1.5"/> <rect x="5.5" y="6" width="13" height="15.5" rx="2" stroke="#67e8f9" stroke-width="1.5"/> <path d="M9 10.5v7M12 10.5v7M15 10.5v7" stroke="#67e8f9" stroke-width="1.3" stroke-linecap="round"/> </svg> </div> <span class="text-xl font-extrabold tracking-tight">FRTRASH</span> </a> <nav class="hidden md:flex items-center gap-8"> <a href="#utilities" class="nav-link text-white/80 hover:text-white">Utilities</a> <a href="#minecraft" class="nav-link text-white/80 hover:text-white">Minecraft</a> <a href="#faq" class="nav-link text-white/80 hover:text-white">FAQ</a> </nav> <div class="flex items-center gap-3"> <a href="#utilities" class="px-4 py-2 rounded-xl bg-primary-400/20 border border-primary-400/30 hover:bg-primary-400/30 transition font-semibold shadow-glow">Launch Tools</a> <button id="menuBtn" class="md:hidden p-2 rounded-xl bg-white/5 border border-white/10" aria-label="Open menu"> <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18M3 12h18M3 18h18" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg> </button> </div> </div> <!-- Mobile menu --> <div id="mobileMenu" class="md:hidden hidden pb-4"> <div class="grid gap-2"> <a href="#utilities" class="px-4 py-2 rounded-lg hover:bg-white/5">Utilities</a> <a href="#minecraft" class="px-4 py-2 rounded-lg hover:bg-white/5">Minecraft</a> <a href="#faq" class="px-4 py-2 rounded-lg hover:bg-white/5">FAQ</a> </div> </div> </div> </header> <!-- Hero --> <section id="top" class="relative overflow-hidden"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28"> <div class="grid lg:grid-cols-2 gap-12 items-center"> <div> <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass text-sm mb-5"> <span class="inline-block w-2 h-2 rounded-full bg-primary-400 animate-pulse"></span> <span>Bright. Fast. Slightly chaotic (on purpose).</span> </div> <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05]"><span class="gradient-text">FRTRASH</span> — tools & servers that just work.</h1> <p class="mt-5 text-white/80 text-lg">Zero-fuss utilities, a lively Minecraft server, and a custom GUI powered by <span class="font-semibold">Three.js + GSAP</span>. Built for speed and flair.</p> <div class="mt-8 flex flex-wrap gap-3"> <a href="#utilities" class="px-5 py-3 rounded-2xl bg-primary-400 text-black font-semibold shadow-glow hover:scale-[1.02] active:scale-[.99] transition">Explore Utilities</a> <a href="#minecraft" class="px-5 py-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition">Join Minecraft</a> </div> <div class="mt-7 grid grid-cols-3 gap-4 text-center"> <div class="glass rounded-2xl p-4"> <div class="text-2xl font-bold">10ms</div> <div class="text-xs text-white/70">Tool response</div> </div> <div class="glass rounded-2xl p-4"> <div class="text-2xl font-bold">MONDAY</div> <div class="text-xs text-white/70">Server schedule</div> </div> <div class="glass rounded-2xl p-4"> <div class="text-2xl font-bold">∞</div> <div class="text-xs text-white/70">Trash collected</div> </div> </div> </div> <!-- Replaced 3D Canvas Side with CodePen "bottle" animation --> <div class="relative h-[420px] sm:h-[520px] lg:h-[560px] rounded-3xl glass border border-white/10 shadow-glow overflow-hidden"> <div class="bottle-3d hero-art"> <section aria-label="3D glowing bottle" class="w-full h-full flex items-center justify-center"> <div class="shadow"></div> <div class="bowl"> <div class="liquid"></div> </div> </section> </div> <!-- Floating UI chips inspired by AutoCloud-style hero --> <div class="absolute top-4 left-4 flex flex-col gap-2">  </section> 
+<!-- Utilities Section -->
+<section id="utilities" class="py-20 border-t border-white/10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-end justify-between mb-10">
+      <h2 class="text-3xl sm:text-4xl font-extrabold">Utilities</h2>
+      <a href="#" class="text-sm text-primary-300 hover:underline">View all →</a>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-  <main class="pt-20">
-    <!-- Hero Section -->
-    <section id="hero" class="relative h-screen flex items-center justify-center">
-      <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1618005182380-5c7f8f64c707?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); opacity: 0.5;"></div>
-      <div class="relative text-center">
-        <h1 class="text-5xl md:text-7xl font-bold text-white mb-4">Unleash Your Power with METEOR</h1>
-        <p class="text-xl md:text-2xl text-gray-300 mb-6">A platform for EPIC file conversions, Minecraft adventures, and a thriving community.</p>
-        <a href="#utensils" class="netflix-btn text-lg" aria-label="Explore Utensils">Explore Utensils</a>
-      </div>
-    </section>
 
-    <!-- Utensils Section -->
-    <section id="utensils" class="py-12">
-      <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold text-white mb-8 text-center section-title">Utensils</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          <div class="tile">
-            <a href="/conversion.html" aria-label="File Conversion Tool">
-              <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80" alt="File Conversion Tool" class="w-full h-64">
-              <div class="tile-overlay">
-                <h3 class="text-lg font-semibold text-white">File Conversion</h3>
-                <p class="text-sm text-gray-300">Convert images, PDFs, Word, and Excel files with ease.</p>
-              </div>
-            </a>
-          </div>
+      <article class="group glass rounded-3xl p-6 hover:shadow-glow transition">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-bold">File Converter</h3>
+          <span class="text-xs px-2 py-1 rounded-lg bg-primary-400/20 border border-primary-400/30">NEW</span>
         </div>
-      </div>
-    </section>
-
-    <!-- Community Section -->
-    <section id="community" class="py-12 bg-gray-900">
-      <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold text-white mb-8 text-center section-title">Community</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          <div class="tile">
-            <a href="https://github.com/meteoryx/meteoryx.github.io" target="_blank" aria-label="Contribute to Meteor on GitHub">
-              <img src="https://img.icons8.com/?size=100&id=LoL4bFzqmAa0&format=png&color=000000" alt="GitHub Community" class="w-40 h-40 mx-auto bg-gray-900 p-4">
-              <div class="tile-overlay">
-                <h3 class="text-lg font-semibold text-white">GitHub Community</h3>
-                <p class="text-sm text-gray-300">Contribute to Meteor on GitHub.</p>
-              </div>
-            </a>
-          </div>
-          <div class="tile">
-            <a href="#" aria-label="Connect with Meteor users on Discord">
-              <img src="https://img.icons8.com/?size=100&id=D2NqKl85S8Ye&format=png&color=000000" alt="Discord Community" class="w-40 h-40 mx-auto bg-gray-900 p-4">
-              <div class="tile-overlay">
-                <h3 class="text-lg font-semibold text-white">Discord Community</h3>
-                <p class="text-sm text-gray-300">Connect with Meteor users on Discord.</p>
-              </div>
-            </a>
-          </div>
+        <p class="mt-3 text-white/70">Convert media and docs at blazing speed. Drag & drop, done.</p>
+        <div class="mt-5 flex items-center gap-2 text-sm">
+          <a href="conversion.html" class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 inline-block">Open</a>
+          <a href="docs.html" class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 inline-block" target="_blank">Docs</a>
         </div>
-      </div>
-    </section>
+      </article>
 
-    <!-- Minecraft Server Section -->
-    <section id="minecraft" class="py-12">
-      <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold text-white mb-8 text-center section-title">Minecraft Server</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          <div class="tile">
-            <a href="minecraftserver.html" aria-label="Join Meteor Minecraft Server">
-              <img src="https://raw.githubusercontent.com/meteoryx/meteoryx.github.io/refs/heads/master/images/logo.png" class="w-40 h-40 mx-auto bg-gray-900 p-4">
-              <div class="tile-overlay">
-                <h3 class="text-lg font-semibold text-white">Meteor Minecraft Server</h3>
-                <p class="text-sm text-gray-300">Join our cracked + premium Minecraft server!</p>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Tutorials & Documentation Section -->
-    <section id="tutorials" class="py-12 bg-gray-900">
-      <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold text-white mb-8 text-center section-title">Tutorials & Documentation</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          <div class="tile">
-            <a href="/docs.html" aria-label="Tutorials and Documentation">
-              <img src="/images/tutorial.jpg" alt="Tutorials and Documentation" class="w-full h-64 bg-gray-900">
-              <div class="tile-overlay">
-                <h3 class="text-lg font-semibold text-white">Tutorials & Documentation</h3>
-                <p class="text-sm text-gray-300">Learn how to use Meteor’s features.</p>
-              </div>
-            </a>
-          </div>
+      <article class="group glass rounded-3xl p-6 hover:shadow-glow transition">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-bold">Image Optimizer</h3>
+          <span class="text-xs px-2 py-1 rounded-lg bg-white/5 border border-white/10">MAINTENANCE</span>
         </div>
-      </div>
-    </section>
-  </main>
+        <p class="mt-3 text-white/70">Squeeze every byte without killing the vibe. Web-ready output.</p>
+        <div class="mt-5 flex items-center gap-2 text-sm">
+          <a href="404.html" class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 inline-block">Open</a>
+          <a href="docs.html" class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 inline-block">Docs</a>
+        </div>
+      </article>
+
+
+      <article class="group glass rounded-3xl p-6 hover:shadow-glow transition">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-bold">Checksum & Hash</h3>
+          <span class="text-xs px-2 py-1 rounded-lg bg-white/5 border border-white/10">MAINTENANCE</span>
+        </div>
+        <p class="mt-3 text-white/70">Verify integrity in a click. SHA, MD5, and more.</p>
+        <div class="mt-5 flex items-center gap-2 text-sm">
+          <a href="404.html" class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 inline-block">Open</a>
+          <a href="docs.html" class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 inline-block">Docs</a>
+        </div>
+      </article>
+
+
+      <article class="group glass rounded-3xl p-6 hover:shadow-glow transition">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-bold">Text Tools</h3>
+          <span class="text-xs px-2 py-1 rounded-lg bg-white/5 border border-white/10">MAINTENANCE</span>
+        </div>
+        <p class="mt-3 text-white/70">Case swap, slugify, minify — tiny helpers that save minutes.</p>
+        <div class="mt-5 flex items-center gap-2 text-sm">
+          <a href="404.html" class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 inline-block">Open</a>
+          <a href="docs.html" class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 inline-block">Docs</a>
+        </div>
+      </article>
+
+
+      <article class="group glass rounded-3xl p-6 hover:shadow-glow transition">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-bold">Archive Wizard</h3>
+          <span class="text-xs px-2 py-1 rounded-lg bg-white/5 border border-white/10">MAINTENANCE</span>
+        </div>
+        <p class="mt-3 text-white/70">Zip, unzip, split archives — smooth and secure.</p>
+        <div class="mt-5 flex items-center gap-2 text-sm">
+          <a href="404.html" class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 inline-block">Open</a>
+          <a href="docs.html" class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 inline-block">Docs</a>
+        </div>
+      </article>
+
+
+      <article class="group glass rounded-3xl p-6 hover:shadow-glow transition">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-bold">Media Toolkit</h3>
+          <span class="text-xs px-2 py-1 rounded-lg bg-white/5 border border-white/10">MAINTENANCE</span>
+        </div>
+        <p class="mt-3 text-white/70">Trim/merge audio & video with dead-simple controls.</p>
+        <div class="mt-5 flex items-center gap-2 text-sm">
+          <a href="404.html" class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 inline-block">Open</a>
+          <a href="docs.html" class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 inline-block">Docs</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+  <!-- Minecraft Section --> <section id="minecraft" class="py-20 border-t border-white/10"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> <div class="grid lg:grid-cols-2 gap-10 items-center"> <div class="relative rounded-3xl overflow-hidden glass border border-white/10 shadow-glow p-6"> <div class="absolute inset-0 bg-[radial-gradient(50%_60%_at_70%_10%,rgba(103,232,249,0.18),rgba(0,0,0,0))]"></div> <div class="relative"> <h3 class="text-2xl font-extrabold">FRTRASH Minecraft</h3> <p class="mt-3 text-white/80">Low-latency survival with quality-of-life mods. Monthly events, friendly staff, and a thriving economy.</p> <ul class="mt-4 space-y-2 text-sm text-white/70 list-disc list-inside"> <li>Version: 1.20+ (Java)</li> <li>Region-optimized routing for smoother pings</li> <li>Backups every 30 mins • No pay-to-win</li> </ul> <div class="mt-6 flex gap-3"> <a href="https://frtrash.github.io/minecraftserver.html" class="px-5 py-3 rounded-2xl bg-primary-400 text-black font-semibold shadow-glow hover:scale-[1.02] transition" target="_blank" rel="noopener">Server Details</a> <button class="px-5 py-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10">How to join</button> </div> </div> </div> <div class="grid sm:grid-cols-2 gap-4"> <div class="glass rounded-2xl p-5"> <div class="text-3xl font-extrabold">99.9%</div> <div class="text-white/70 text-sm">Uptime</div> </div> <div class="glass rounded-2xl p-5"> <div class="text-3xl font-extrabold">No Lag</div> <div class="text-white/70 text-sm">Optimized TPS</div> </div> <div class="glass rounded-2xl p-5"> <div class="text-3xl font-extrabold">Events</div> <div class="text-white/70 text-sm">Monthly competitions</div> </div> <div class="glass rounded-2xl p-5"> <div class="text-3xl font-extrabold">Fair</div> <div class="text-white/70 text-sm">No P2W nonsense</div> </div> </div> </div> </div> </section> <!-- FAQ --> <section id="faq" class="py-20 border-t border-white/10"> <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8"> <h2 class="text-3xl sm:text-4xl font-extrabold mb-8">FAQ</h2> <div class="space-y-4"> <!-- Item --> <details class="group glass rounded-2xl p-5"> <summary class="cursor-pointer text-lg font-semibold flex items-center justify-between list-none"> <span>Is FRTRASH open-source?</span> <span class="ml-4 group-open:rotate-180 transition-transform">▾</span> </summary> <p class="mt-3 text-white/80">Parts of the stack will be open-sourced over time. Watch this space for repos and contribution guides.</p> </details> <!-- Item --> <details class="group glass rounded-2xl p-5"> <summary class="cursor-pointer text-lg font-semibold flex items-center justify-between list-none"> <span>What browsers are supported?</span> <span class="ml-4 group-open:rotate-180 transition-transform">▾</span> </summary> <p class="mt-3 text-white/80">Modern Chromium, Firefox, and Safari. Mobile support is first-class; legacy browsers are not targeted.</p> </details> <!-- Item --> <details class="group glass rounded-2xl p-5"> <summary class="cursor-pointer text-lg font-semibold flex items-center justify-between list-none"> <span>How do I report bugs or request features?</span> <span class="ml-4 group-open:rotate-180 transition-transform">▾</span> </summary> <p class="mt-3 text-white/80">Use the Contact section below or open an issue in our repositories. Screenshots and steps to reproduce help a lot.</p> </details> </div> </div> </section> 
+<!--footer (FrTrashIsTheGoat.)--><footer style="font-family: 'Arial', sans-serif; margin:0;">
 
  
+  <div style="background-color:#222; color:#fff; display:flex; justify-content:center; flex-wrap:wrap; gap:50px; padding:15px 0; font-weight:bold; font-size:14px; border-bottom:1px solid #444; text-transform:uppercase;">
+    <a href="status1.html" class="footer-link">Server Status</a>
+    <a href="support.html" class="footer-link">Support</a>
+    <a href="huimprove.html" class="footer-link">Help Us Improve</a>
+    <a href="https://github.com/frtrash/frtrash.github.io" class="footer-link">Contribute</a>
+  </div>
 
-  <footer class="bg-black py-6">
-    <div class="container mx-auto px-4 text-center text-gray-300">
-      <p>© 2025 Meteor. All Rights Reserved.</p>
-      <p><a href="https://github.com/meteoryx/meteoryx.github.io" target="_blank" class="text-red-900 hover:text-purple-900 transition">GitHub</a></p>
+
+  <div style="background: #000; color:#fff; padding:50px 20px; text-align:center; text-transform:uppercase;">
+
+    <!-- Social Icons -->
+    <div class="social-icons" style="display: flex; gap:20px; flex-wrap: wrap; justify-content: center; margin-bottom:40px;">
+
+      <!-- X / Twitter -->
+      <a href="https://twitter.com/frtrash" target="_blank" rel="noopener" 
+         style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; 
+                background: #111; border-radius: 50%; padding: 8px; text-decoration: none; transition: transform 0.3s ease;">
+        <svg viewBox="0 0 512 512" width="22" height="22" fill="#fff">
+          <path d="M403.2 48h78.643l-171.52 196.544L512 488h-158.016l-123.744-161.248L99.136 488H10.112l183.456-210.24L0 48h161.024l111.84 148.288L403.2 48zm-27.52 417.792h43.52L138.368 68.672H91.776z"/>
+        </svg>
+      </a>
+
+      <!-- Facebook -->
+      <a href="https://facebook.com/frtrash" target="_blank" rel="noopener"
+         style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; 
+                background: #111; border-radius: 50%; padding: 8px; text-decoration: none; transition: transform 0.3s ease;">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="#fff">
+          <path d="M22.675 0h-21.35C.592 0 0 .593 0 1.326v21.348C0 23.408.592 24 1.325 24h11.494v-9.294H9.691v-3.622h3.128V8.414c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.464.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.408 24 24 23.408 24 22.674V1.326C24 .593 23.408 0 22.675 0z"/>
+        </svg>
+      </a>
+
+      <!-- Instagram -->
+      <a href="https://instagram.com/frtrash" target="_blank" rel="noopener"
+         style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; 
+                background: #111; border-radius: 50%; padding: 8px; text-decoration: none; transition: transform 0.3s ease;">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="#fff">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.056 1.97.246 2.428.415a4.92 4.92 0 011.768 1.016 4.918 4.918 0 011.016 1.768c.169.459.359 1.259.415 2.428.058 1.266.07 1.645.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.246 1.97-.415 2.428a4.922 4.922 0 01-1.016 1.768 4.918 4.918 0 01-1.768 1.016c-.459.169-1.259.359-2.428.415-1.266.058-1.645.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.97-.246-2.428-.415a4.923 4.923 0 01-1.768-1.016 4.918 4.918 0 01-1.016-1.768c-.169-.459-.359-1.259-.415-2.428C2.175 15.747 2.163 15.368 2.163 12s.012-3.584.07-4.85c.056-1.17.246-1.97.415-2.428a4.918 4.918 0 011.016-1.768 4.922 4.922 0 011.768-1.016c.459-.169 1.259-.359 2.428-.415C8.416 2.175 8.796 2.163 12 2.163zM12 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a3.999 3.999 0 110-7.998 3.999 3.999 0 010 7.998zM18.406 4.594a1.44 1.44 0 11-2.881 0 1.44 1.44 0 012.881 0z"/>
+        </svg>
+      </a>
+
+      <!-- YouTube -->
+      <a href="https://youtube.com/frtrash" target="_blank" rel="noopener"
+         style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; 
+                background: #111; border-radius: 50%; padding: 8px; text-decoration: none; transition: transform 0.3s ease;">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="#fff">
+          <path d="M23.498 6.186a2.99 2.99 0 00-2.11-2.11C19.472 3.5 12 3.5 12 3.5s-7.472 0-9.388.576a2.99 2.99 0 00-2.11 2.11C0 8.104 0 12 0 12s0 3.896.502 5.814a2.99 2.99 0 002.11 2.11C4.528 20.5 12 20.5 12 20.5s7.472 0 9.388-.576a2.99 2.99 0 002.11-2.11C24 15.896 24 12 24 12s0-3.896-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+        </svg>
+      </a>
+
     </div>
-  </footer>
-  <script>
-document.addEventListener("DOMContentLoaded", () => {
-  if (location.pathname.endsWith(".html")) {
-    history.replaceState({}, "", location.pathname.replace(".html", ""));
+
+    <!-- Trash SVG Logo: Properly Centered -->
+    <div style="margin-bottom:30px; display:flex; flex-direction:column; align-items:center;">
+      <a href="index.html" title="FrTrash Home" style="margin-bottom:10px;">
+        <svg width="80" height="80" viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 6h18v2H3V6zm2 3h14v13H5V9zm3 2v9h2v-9H8zm4 0v9h2v-9h-2zm4 0v9h2v-9h-2z"/>
+        </svg>
+      </a>
+      <div style="font-size:24px; font-weight:bold; color:#fff;">FRTRASH</div>
+    </div>
+
+    <!-- Copyright -->
+    <div style="font-size:12px; color:#fff; margin-bottom:20px; font-weight:bold; text-transform:uppercase;">
+      © 2025 FrTrash. All rights reserved.
+    </div>
+
+    <!-- Bottom Links -->
+    <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:40px; font-size:16px; font-weight:bold; text-transform:uppercase; margin-bottom:20px;">
+      <a href="privacy.html" class="footer-link">Privacy Notice</a>
+      <a href="tos.html" class="footer-link">Terms of Service</a>
+    </div>
+
+  </div>
+</footer>
+
+<style>
+  .footer-link, .social-icons a {
+    position: relative;
+    padding: 6px 12px;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    display: inline-block;
   }
-});
-</script>
-</body>
-</html>
+
+  .footer-link:hover, .social-icons a:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+  }
+
+  .social-icons svg {
+    transition: all 0.3s ease;
+    vertical-align: middle;
+  }
+
+  .social-icons a:hover svg {
+    transform: scale(1.2);
+  }
+</style>
+
+
+
+
